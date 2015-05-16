@@ -242,7 +242,7 @@ $(document).ready(function(){
         var vector = new THREE.Vector3(( event.clientX / window.innerWidth ) * 2 - 1, -( event.clientY / window.innerHeight ) * 2 + 1, 0.5);
         vector = vector.unproject(camera);
         var raycaster = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize());
-        var intersects = raycaster.intersectObjects(tab_user_connected);
+        var intersects = raycaster.intersectObjects(arrayShape);
 
         if (intersects.length > 0 && intersects[0].object != arrayShape[ID])
         {
@@ -574,13 +574,11 @@ $(document).ready(function(){
     $('body').mouseleave(function(e){
         x = 0;
         y = 0;
-        console.log(x);
     });
 
     $('body').mouseenter(function(e){
         x = 1;
         y = 1;
-        console.log(x);
     });
 
     window.onbeforeunload = closeIt;

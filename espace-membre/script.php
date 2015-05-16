@@ -68,19 +68,14 @@ include('bdd_connexion.php');
 	}
 	else if($_POST['action'] == 'createDiscussion')
 	{
-        $req = $bdd->prepare("SELECT * FROM discussions WHERE user_a = ? AND user_b = ?");
-        $req->execute(array($idUser, $nameObj));
+        $req = $bdd->prepare("SELECT * FROM discussions WHERE (user_a = ? OR user_a = ?) AND (user_b = ? OR user_b = ?)");
+        $req->execute(array($idUser, $nameObj, $idUser, $nameObj,));
 
         $discussion_exist = $req->rowCount();
         $id_d = $req->fetch();
         $id_conversation = $id_d['id'];
-
-        $req->execute(array($nameObj, $idUser));
-        $invert_discussion_exist = $req->rowCount();
-		$id_di = $req->fetch();
-		$id_conversation_invert = $id_di['id'];
         
-        if($discussion_exist == 0 AND $invert_discussion_exist == 0 AND $nameObj != 'logout')
+        if($discussion_exist == 0 AND $nameObj != 'logout')
         {
 		    $req = $bdd->prepare("INSERT INTO discussions(user_a, user_b, time) VALUES(?,?, NOW()) ");
 		    $req->execute(array($idUser, $nameObj));
@@ -90,15 +85,11 @@ include('bdd_connexion.php');
 		    $new_id_conversation = $req->fetch();
 		    $d['id_conversation'] = $new_id_conversation['id'];
         }
-        else if($discussion_exist != 0 OR $invert_discussion_exist != 0 AND $nameObj != 'logout')
+        else if($discussion_exist != 0 AND $nameObj != 'logout')
         {
 			if(!empty($id_conversation))
 			{
 				$d['id_conversation'] = $id_conversation;
-			} 
-			else if(!empty($id_conversation_invert))
-			{
-				$d['id_conversation'] = $id_conversation_invert;
 			}
         }
 
