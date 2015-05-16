@@ -1,0 +1,1 @@
+function localS(){if("undefined"!=typeof localStorage){var e=localStorage.getItem("flag");if("true"!=e)return e="true",localStorage.setItem("flag",e),void(document.location.href="espace-membre/inscription.view.php")}}localS();
