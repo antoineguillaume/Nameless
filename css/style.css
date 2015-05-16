@@ -474,7 +474,19 @@ html body .md-modal.modal-welcome {
   }
 }
 html body .md-modal.modal-chat {
-  height: 55%;
+  width: 55%;
+  height: 50%;
+  min-height: 347px;
+}
+@media screen and (max-width: 1310px) {
+  html body .md-modal.modal-chat {
+    width: 65%;
+  }
+}
+@media screen and (max-width: 900px) {
+  html body .md-modal.modal-chat {
+    width: 75%;
+  }
 }
 html body .md-modal.modal-welcome {
   height: 65%;
@@ -519,16 +531,21 @@ html body .md-modal .md-content .align-right {
   text-align: right;
 }
 html body .md-modal .md-content .chat .chatroom {
-  margin: 100px 0px 0px 0px;
+  margin: 70px 0px 0px 0px;
   padding: 0px;
   min-height: 100px;
 }
 html body .md-modal .md-content .chat .chatroom li {
   line-height: 1.4;
   font-family: 'GothamBold', Helvetica, Arial, sans-serif;
-  font-size: 38px;
+  font-size: 32px;
   color: #252525;
   text-transform: uppercase;
+}
+@media screen and (max-width: 1000px) {
+  html body .md-modal .md-content .chat .chatroom li {
+    font-size: 26px;
+  }
 }
 html body .md-modal .md-content .chat fieldset {
   border: none;

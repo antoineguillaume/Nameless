@@ -121,5 +121,4 @@
     <script type="text/javascript" src="three/tween.js"></script>
     <script type="text/javascript" src="js/THREEx.WindowResize.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
-    <script type="text/javascript" src="js/activite.js"></script>
 </html>

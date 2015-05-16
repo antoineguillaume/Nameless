@@ -583,7 +583,17 @@ html{
 			}
 
 			&.modal-chat{
-				height: 55%;
+				width: 55%;
+				height: 50%;
+				min-height: 347px;
+
+		        @media screen and (max-width: 1310px) {
+					width: 65%;
+		        }
+
+		        @media screen and (max-width: 900px) {
+					width: 75%;
+		        }
 			}
 
 			&.modal-welcome{
@@ -637,16 +647,20 @@ html{
 
 				.chat{
 					.chatroom{
-						margin: 100px 0px 0px 0px;
+						margin: 70px 0px 0px 0px;
 						padding: 0px;
 						min-height: 100px;
 
 						li{
 							line-height: 1.4;
 							font-family: @font-gotham-bold;
-							font-size: @font-size-h3;
+							font-size: 32px;
 							color: @text-color-darker;
 							text-transform: uppercase;
+
+					        @media screen and (max-width: 1000px) {
+								font-size: 26px;
+					        }
 						}
 					}
 
