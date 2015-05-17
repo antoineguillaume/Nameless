@@ -459,6 +459,10 @@ html{
 				border-right: 3px solid @background-color-lighter;
 				padding: 20px 10px;
 
+		        @media screen and (max-width: 1080px) {
+		        	padding: 10px 0px;
+		        }
+
 				&:last-child{
 					border: none;
 				}
@@ -470,14 +474,17 @@ html{
 					font-size: @font-size-h4;
 					color: #5c5c5c;
 
-
 			        @media screen and (max-width: 1176px) {
-						font-size: @font-size-h4;
-						margin: 6px 0px 0px 3px;
+			        	font-size: @font-size-h4;
+			        	margin: 7px 0px 0px 0px;
+						display: block;
+						width: 100%;
+						text-align: center;
 			        }
 				}
 
 				p{
+					position: relative;
 					line-height: 1.4;
 					font-size: @font-size-small;
 					float: left;
@@ -486,9 +493,11 @@ html{
 					margin-left: 12px;
 
 			        @media screen and (max-width: 1176px) {
+			        	width: 75%;
+			        	margin: 0px 21px;
+			        	text-align: center;
 						font-size: @font-size-tiny;
-						margin-left: 6px;
-						width: 80%;
+						padding-top: 6px;
 			        }
 				}
 			}
@@ -554,6 +563,10 @@ html{
 				height: 100%;
 				margin-right: 5px;
 			}
+
+	        @media screen and (max-width: 1280px) {
+	        	display: none;
+	        }
 		}
 
 		.md-modal {
@@ -658,7 +671,7 @@ html{
 							color: @text-color-darker;
 							text-transform: uppercase;
 
-					        @media screen and (max-width: 1000px) {
+					        @media screen and (max-width: 1366px) {
 								font-size: 26px;
 					        }
 						}
@@ -724,10 +737,6 @@ html{
 							background-size: 20px;
 							margin-top: 10px;
 						}
-
-				        .container-form{
-				        	padding: 15px 0px 15px 0px;
-				        }
 					}
 
 					.chatroom li {
@@ -780,10 +789,6 @@ html{
 					outline: none;
 					padding: 5px 20px;
 					margin: 10px 0px;
-				}
-
-				.container-form{
-					padding: 15px 0px 15px 0px;
 				}
 
 				.submit{

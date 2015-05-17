@@ -361,6 +361,11 @@ html body .statistiques .stats {
   border-right: 3px solid #f7f7f7;
   padding: 20px 10px;
 }
+@media screen and (max-width: 1080px) {
+  html body .statistiques .stats {
+    padding: 10px 0px;
+  }
+}
 html body .statistiques .stats:last-child {
   border: none;
 }
@@ -374,10 +379,14 @@ html body .statistiques .stats span {
 @media screen and (max-width: 1176px) {
   html body .statistiques .stats span {
     font-size: 34px;
-    margin: 6px 0px 0px 3px;
+    margin: 7px 0px 0px 0px;
+    display: block;
+    width: 100%;
+    text-align: center;
   }
 }
 html body .statistiques .stats p {
+  position: relative;
   line-height: 1.4;
   font-size: 13px;
   float: left;
@@ -387,9 +396,11 @@ html body .statistiques .stats p {
 }
 @media screen and (max-width: 1176px) {
   html body .statistiques .stats p {
+    width: 75%;
+    margin: 0px 21px;
+    text-align: center;
     font-size: 12px;
-    margin-left: 6px;
-    width: 80%;
+    padding-top: 6px;
   }
 }
 html body .popup {
@@ -444,6 +455,11 @@ html body div.navigation-icons {
 html body div.navigation-icons svg {
   height: 100%;
   margin-right: 5px;
+}
+@media screen and (max-width: 1280px) {
+  html body div.navigation-icons {
+    display: none;
+  }
 }
 html body .md-modal {
   position: fixed;
@@ -542,7 +558,7 @@ html body .md-modal .md-content .chat .chatroom li {
   color: #252525;
   text-transform: uppercase;
 }
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1366px) {
   html body .md-modal .md-content .chat .chatroom li {
     font-size: 26px;
   }
@@ -601,9 +617,6 @@ html body .md-modal .md-content .chat fieldset button.md-save {
   background-size: 20px;
   margin-top: 10px;
 }
-html body .md-modal .md-content .chat fieldset .container-form {
-  padding: 15px 0px 15px 0px;
-}
 html body .md-modal .md-content .chat .chatroom li {
   padding: 15px 0px 10px 0px;
   list-style: none;
@@ -646,9 +659,6 @@ html body .content fieldset input {
   outline: none;
   padding: 5px 20px;
   margin: 10px 0px;
-}
-html body .content fieldset .container-form {
-  padding: 15px 0px 15px 0px;
 }
 html body .content fieldset .submit {
   margin-top: 30px;

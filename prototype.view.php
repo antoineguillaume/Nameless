@@ -17,18 +17,19 @@
         <div class="md-modal modal-chat">
             <div class="md-content">
                 <div class="chat">
-
                     <ul class="chatroom"></ul>
-
                     <form id="chatForm" method="post" action="">
                        <fieldset>
-                            <div class="container-form">
-                                <input type="text" name="message" id="message" placeholder="Write something..." />
-                                <div class="error-length"><p class="errors-lign">Votre message doit contenir au maximum 130 caractères et il contient <span class="text-lenght"></span> caractères.</p></div>
-                                <!--  <textarea name="fiche" id="fiche" placeholder="You can save here informations you receive from your interlocutor."></textarea>
-                                <button class="md-save">Save</button> -->
-                            </div>
+                            <input type="text" name="message" id="message" placeholder="Write something..." />
+                            <div class="error-length"><p class="errors-lign">Votre message doit contenir au maximum 130 caractères et il contient <span class="text-lenght"></span> caractères.</p></div>
+                            <!--  <textarea name="fiche" id="fiche" placeholder="You can save here informations you receive from your interlocutor."></textarea>
+                            <button class="md-save">Save</button> -->
                        </fieldset>
+                    </form>
+                    <form action="" method="post" id="chatFiche">
+                        <fieldset>
+                            
+                        </fieldset>
                     </form>
                 </div>
             </div>
