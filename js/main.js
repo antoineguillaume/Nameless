@@ -355,7 +355,7 @@ $(document).ready(function(){
             "filter" : "blur(0px)"
         });
         $(".chatroom li").remove();
-        $('.modal-chat').fadeOut(400);
+        $('.container-modal-chat').fadeOut(400);
         $('.modal-welcome').fadeOut(400);
         removeNotif();
         container.focus();
@@ -377,7 +377,7 @@ $(document).ready(function(){
 
         if(argument == 'chat')
         {
-            $(".modal-chat").fadeIn(400);
+            $(".container-modal-chat").fadeIn(400);
         }
         else if(argument == 'welcome')
         {
@@ -570,29 +570,29 @@ $(document).ready(function(){
 
     THREEx.WindowResize(renderer, camera);
 
-    var x, y;
-    $('body').mouseleave(function(e){
-        x = 0;
-        y = 0;
-    });
+    // var x, y;
+    // $('body').mouseleave(function(e){
+    //     x = 0;
+    //     y = 0;
+    // });
 
-    $('body').mouseenter(function(e){
-        x = 1;
-        y = 1;
-    });
+    // $('body').mouseenter(function(e){
+    //     x = 1;
+    //     y = 1;
+    // });
 
-    window.onbeforeunload = closeIt;
+    // window.onbeforeunload = closeIt;
     
-    function closeIt(e){
-        if(!x && !y){
-            $.ajax({
-                url: 'espace-membre/script.php',
-                type: 'POST',
-                data: 'action=' + 'isNotConnected',
-                success: function(data){
-                    document.location.href="espace-membre/deconnexion.php";
-                }
-            });
-        }
-    }
+    // function closeIt(e){
+    //     if(!x && !y){
+    //         $.ajax({
+    //             url: 'espace-membre/script.php',
+    //             type: 'POST',
+    //             data: 'action=' + 'isNotConnected',
+    //             success: function(data){
+    //                 document.location.href="espace-membre/deconnexion.php";
+    //             }
+    //         });
+    //     }
+    // }
 });

@@ -11,7 +11,7 @@
 html body {
   font-family: 'cordalight', serif, Arial;
   width: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
   padding: 0px;
   margin: 0px;
 }
@@ -335,20 +335,12 @@ html body .statistiques {
 @media screen and (max-width: 1470px) {
   html body .statistiques {
     width: 90%;
-    right: 0%;
+    left: 5%;
   }
 }
-@media screen and (max-width: 1306px) {
-  html body .statistiques {
-    width: 1176px;
-    right: 0%;
-    left: auto;
-  }
-}
-@media screen and (max-width: 1176px) {
+@media screen and (max-width: 1270px) {
   html body .statistiques {
     width: 100%;
-    right: 0%;
     left: 0%;
   }
 }
@@ -361,9 +353,9 @@ html body .statistiques .stats {
   border-right: 3px solid #f7f7f7;
   padding: 20px 10px;
 }
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 1140px) {
   html body .statistiques .stats {
-    padding: 10px 0px;
+    padding: 20px 0px;
   }
 }
 html body .statistiques .stats:last-child {
@@ -376,7 +368,7 @@ html body .statistiques .stats span {
   font-size: 34px;
   color: #5c5c5c;
 }
-@media screen and (max-width: 1176px) {
+@media screen and (max-width: 1076px) {
   html body .statistiques .stats span {
     font-size: 34px;
     margin: 7px 0px 0px 0px;
@@ -394,7 +386,7 @@ html body .statistiques .stats p {
   width: 70%;
   margin-left: 12px;
 }
-@media screen and (max-width: 1176px) {
+@media screen and (max-width: 1076px) {
   html body .statistiques .stats p {
     width: 75%;
     margin: 0px 21px;
@@ -461,139 +453,259 @@ html body div.navigation-icons svg {
     display: none;
   }
 }
-html body .md-modal {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  bottom: 0px;
-  right: 0px;
-  width: 100%;
-  max-width: 100%;
-  height: 100%;
-  z-index: 2000;
-  background: rgba(255, 255, 255, 0.5);
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-html body .md-modal.modal-chat,
-html body .md-modal.modal-welcome {
+html body .modal-welcome {
   display: none;
-  width: 65%;
-  margin: auto;
+  position: absolute;
+  top: 7%;
+  left: 50%;
+  margin-left: -450px;
+  width: 900px;
+  z-index: 2000;
+  background: rgba(255, 255, 255, 0.3);
+  padding: 0px 100px;
   border: 6px solid #5c5c5c;
 }
-@media screen and (max-width: 1200px) {
-  html body .md-modal.modal-chat,
-  html body .md-modal.modal-welcome {
-    width: 75%;
+@media screen and (max-width: 1440px) {
+  html body .modal-welcome {
+    width: 70%;
+    left: 15%;
+    margin-left: 0px;
   }
 }
-html body .md-modal.modal-chat {
-  width: 55%;
-  height: 50%;
-  min-height: 347px;
-}
-@media screen and (max-width: 1310px) {
-  html body .md-modal.modal-chat {
-    width: 65%;
+@media screen and (max-width: 1366px) {
+  html body .modal-welcome {
+    width: 84%;
+    top: 4%;
+    left: 8%;
+    margin-left: 0px;
   }
 }
-@media screen and (max-width: 900px) {
-  html body .md-modal.modal-chat {
-    width: 75%;
-  }
-}
-html body .md-modal.modal-welcome {
-  height: 65%;
-  min-height: 675px;
-}
-html body .md-modal .md-content {
-  position: relative;
-  margin: 0 auto;
-  overflow: hidden;
-  width: 75%;
-}
-html body .md-modal .md-content h2 {
-  padding: 12% 0px 40px 0px;
+html body .modal-welcome h2 {
+  padding: 10% 0px 40px 0px;
   font-size: 42px;
 }
-html body .md-modal .md-content p {
+@media screen and (max-width: 1440px) {
+  html body .modal-welcome h2 {
+    padding: 8% 0px 30px 0px;
+    font-size: 38px;
+  }
+}
+html body .modal-welcome p {
   line-height: 24px;
   font-size: 15px;
   padding: 15px 0px 10px 0px;
 }
-html body .md-modal .md-content p span.blackshape {
+html body .modal-welcome p span.blackshape {
   padding: 2px 3px 1px 3px;
   background: #555555;
   color: #f7f7f7;
 }
-html body .md-modal .md-content div.new-shape {
+@media screen and (max-width: 1366px) {
+  html body .modal-welcome p {
+    font-size: 13px;
+  }
+}
+html body .modal-welcome div.new-shape {
   width: 100%;
-  margin-top: 35px;
+  margin: 25px 0px;
   padding: 5px 25px;
   background: rgba(255, 255, 255, 0.6);
   border: 3px solid #c3c3c3;
   border-radius: 4px;
   font-style: italic;
 }
-html body .md-modal .md-content div.new-shape p {
+html body .modal-welcome div.new-shape p {
   font-size: 13px;
   color: #b0afaf;
   text-align: center;
 }
-html body .md-modal .md-content .align-right {
+@media screen and (max-width: 1366px) {
+  html body .modal-welcome div.new-shape {
+    margin: 15px 0px 25px 0px;
+  }
+}
+html body .modal-welcome .align-right {
   padding-top: 35px;
   text-align: right;
+  font-style: italic;
 }
-html body .md-modal .md-content .chat .chatroom {
-  margin: 70px 0px 0px 0px;
+@media screen and (max-width: 1366px) {
+  html body .modal-welcome .align-right {
+    padding-top: 15px;
+  }
+}
+html body button.md-close {
+  background: transparent;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 30px;
+  height: 30px;
+  text-indent: -9999px;
+  background-image: url(../img/close-icon.png);
+  background-repeat: no-repeat;
+  background-size: 30px;
+}
+html body .container-modal-chat {
+  display: none;
+  position: absolute;
+  padding-top: 200px;
+  bottom: 0px;
+  width: 80%;
+  margin-left: 10%;
+  max-width: 100%;
+  height: 100%;
+  z-index: 2000;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+@media screen and (max-width: 1470px) {
+  html body .container-modal-chat {
+    width: 90%;
+    margin-left: 5%;
+  }
+}
+@media screen and (max-width: 1366px) {
+  html body .container-modal-chat {
+    padding-top: 120px;
+  }
+}
+@media screen and (max-width: 1280px) {
+  html body .container-modal-chat {
+    width: 100%;
+    margin-left: 0%;
+    padding-top: 100px;
+  }
+}
+html body .container-modal-chat .md-modal {
+  height: 62%;
+  position: relative;
+  border: 6px solid #5c5c5c;
+}
+html body .container-modal-chat .modal-chat {
+  float: left;
+  width: 65%;
+  min-height: 377px;
+}
+@media screen and (max-width: 1280px) {
+  html body .container-modal-chat .modal-chat {
+    height: 50%;
+    width: 70%;
+  }
+}
+html body .container-modal-chat .modal-chat-fiches {
+  float: right;
+  width: 30%;
+  min-height: 377px;
+}
+@media screen and (max-width: 1280px) {
+  html body .container-modal-chat .modal-chat-fiches {
+    height: 50%;
+    float: left;
+    border-left: 0px;
+  }
+}
+html body .container-modal-chat .md-content {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  padding: 15px;
+}
+html body .container-modal-chat .md-content #chatFiche {
+  height: 100%;
+}
+html body .container-modal-chat .md-content #chatFiche fieldset {
+  height: 100%;
+}
+html body .container-modal-chat .md-content #chatFiche textarea {
+  padding: 15px;
+  border: none;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  font-size: 13px;
+}
+html body .container-modal-chat .md-content #chatFiche input[type="submit"] {
+  padding: 0px;
+  border: none;
+  position: relative;
+  top: -45px;
+  height: 45px;
+  width: 100%;
+  text-transform: uppercase;
+  font-family: 'GothamLight', Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  background: #5c5c5c;
+  color: white;
+}
+html body .container-modal-chat .md-content .chat .chatroom {
+  width: 75%;
+  margin: 50px auto 0px auto;
   padding: 0px;
   min-height: 100px;
 }
-html body .md-modal .md-content .chat .chatroom li {
+html body .container-modal-chat .md-content .chat .chatroom li {
   line-height: 1.4;
   font-family: 'GothamBold', Helvetica, Arial, sans-serif;
   font-size: 32px;
-  color: #252525;
+  color: #5c5c5c;
   text-transform: uppercase;
 }
 @media screen and (max-width: 1366px) {
-  html body .md-modal .md-content .chat .chatroom li {
+  html body .container-modal-chat .md-content .chat .chatroom li {
     font-size: 26px;
   }
 }
-html body .md-modal .md-content .chat fieldset {
+html body .container-modal-chat .md-content .chat #chatForm {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  right: 15px;
+}
+html body .container-modal-chat .md-content .chat #chatForm fieldset {
   border: none;
   overflow: hidden;
   padding-left: 0px;
 }
-html body .md-modal .md-content .chat fieldset input {
-  float: left;
+html body .container-modal-chat .md-content .chat #chatForm fieldset input {
   display: block;
-  width: 100%;
-  height: 40px;
+  height: 45px;
   outline: none;
-  padding-left: 15px;
   border: none;
+}
+html body .container-modal-chat .md-content .chat #chatForm fieldset #message {
+  float: left;
+  width: 86%;
+  padding-left: 15px;
   background: #f7f7f7;
   color: #b0afaf;
 }
-html body .md-modal .md-content .chat fieldset .error-length {
-  clear: both;
-  margin-top: 20px;
+html body .container-modal-chat .md-content .chat #chatForm fieldset input[type="submit"] {
+  text-transform: uppercase;
+  font-family: 'GothamLight', Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  float: right;
+  width: 12%;
+  background: #5c5c5c;
+  color: white;
+}
+html body .container-modal-chat .md-content .chat #chatForm fieldset .error-length {
+  text-align: center;
+  margin-top: 10px;
   display: none;
 }
-html body .md-modal .md-content .chat fieldset .error-length p {
+html body .container-modal-chat .md-content .chat #chatForm fieldset .error-length p {
   padding-left: 15px;
   font-size: 13px;
   color: #fa3f3f;
 }
-html body .md-modal .md-content .chat fieldset .error-length p span.text-lenght {
+html body .container-modal-chat .md-content .chat #chatForm fieldset .error-length p span.text-lenght {
   font-size: 13px;
   color: #fa3f3f;
 }
-html body .md-modal .md-content .chat fieldset textarea {
+html body .container-modal-chat .md-content .chat #chatForm fieldset textarea {
   position: relative;
   margin-top: 30px;
   padding-left: 15px;
@@ -606,35 +718,12 @@ html body .md-modal .md-content .chat fieldset textarea {
   background: #f7f7f7;
   color: #b0afaf;
 }
-html body .md-modal .md-content .chat fieldset button.md-save {
-  float: right;
-  width: 20px;
-  height: 20px;
-  background: transparent;
-  text-indent: -9999px;
-  background-image: url(../img/save-icon.png);
-  background-repeat: no-repeat;
-  background-size: 20px;
-  margin-top: 10px;
-}
-html body .md-modal .md-content .chat .chatroom li {
+html body .container-modal-chat .md-content .chat .chatroom li {
   padding: 15px 0px 10px 0px;
   list-style: none;
 }
-html body .md-modal .md-content .chat .chatroom li:first-child {
+html body .container-modal-chat .md-content .chat .chatroom li:first-child {
   padding-top: 0px;
-}
-html body .md-modal button.md-close {
-  background: transparent;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 30px;
-  height: 30px;
-  text-indent: -9999px;
-  background-image: url(../img/close-icon.png);
-  background-repeat: no-repeat;
-  background-size: 30px;
 }
 html body .md-show {
   visibility: visible;

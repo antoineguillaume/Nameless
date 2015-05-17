@@ -31,6 +31,7 @@
 @gray-light:             lighten(@gray-base, 46.7%); // #777
 @gray-lighter:           lighten(@gray-base, 95.5%); // #eee
 
+@black-matrix:             #5c5c5c;
 @text-color:               #4c4c4c;
 @text-color-darker:        #252525;
 @text-color-lighter:       #b0afaf;
@@ -77,7 +78,7 @@ html{
 	body{
 		font-family: @font-corda-light;
 		width: 100%;
-		overflow-x: hidden;
+		overflow: hidden;
 		padding: 0px;
 		margin: 0px;
 
@@ -429,24 +430,17 @@ html{
 			z-index: 2000;
 			display: block;
 			width: 80%;
-			border-top: 6px solid #5c5c5c;
-			border-right: 6px solid #5c5c5c;
-			border-left: 6px solid #5c5c5c;
+			border-top: 6px solid @black-matrix;
+			border-right: 6px solid @black-matrix;
+			border-left: 6px solid @black-matrix;
 
 	        @media screen and (max-width: 1470px) {
 				width: 90%;
-				right: 0%;
+				left: 5%;
 	        }
 
-	        @media screen and (max-width: 1306px) {
-				width: 1176px;
-				right: 0%;
-				left: auto;
-	        }
-
-	        @media screen and (max-width: 1176px) {
+	        @media screen and (max-width: 1270px) {
 				width: 100%;
-				right: 0%;
 				left: 0%;
 	        }
 
@@ -459,8 +453,8 @@ html{
 				border-right: 3px solid @background-color-lighter;
 				padding: 20px 10px;
 
-		        @media screen and (max-width: 1080px) {
-		        	padding: 10px 0px;
+		        @media screen and (max-width: 1140px) {
+		        	padding: 20px 0px;
 		        }
 
 				&:last-child{
@@ -472,9 +466,9 @@ html{
 					float: left;
 					font-family: @font-gotham-bold;
 					font-size: @font-size-h4;
-					color: #5c5c5c;
+					color: @black-matrix;
 
-			        @media screen and (max-width: 1176px) {
+			        @media screen and (max-width: 1076px) {
 			        	font-size: @font-size-h4;
 			        	margin: 7px 0px 0px 0px;
 						display: block;
@@ -492,7 +486,7 @@ html{
 					width: 70%;
 					margin-left: 12px;
 
-			        @media screen and (max-width: 1176px) {
+			        @media screen and (max-width: 1076px) {
 			        	width: 75%;
 			        	margin: 0px 21px;
 			        	text-align: center;
@@ -505,7 +499,7 @@ html{
 
 		.popup{
 			border-radius: 7px;
-			border: 5px solid #5c5c5c;
+			border: 5px solid @black-matrix;
 			display: none;
 			z-index: 2000;
 			position: absolute;
@@ -569,98 +563,202 @@ html{
 	        }
 		}
 
-		.md-modal {
-			position: fixed;
-			top: 0px;
-			left: 0px;
+		.modal-welcome{
+			display: none;
+			position: absolute;
+			top: 7%;
+			left: 50%;
+			margin-left: -450px;
+			width: 900px;
+			z-index: 2000;
+			background: rgba(255,255,255,.3);
+			padding: 0px 100px;
+			border: 6px solid @black-matrix;
+
+	        @media screen and (max-width: 1440px) {
+	        	width: 70%;
+	        	left: 15%;
+	        	margin-left: 0px;
+	        }
+
+	        @media screen and (max-width: 1366px) {
+	        	width: 84%;
+	        	top: 4%;
+	        	left: 8%;
+	        	margin-left: 0px;
+	        }
+
+			h2{
+				padding: 10% 0px 40px 0px; 
+				font-size: @font-size-h2;
+
+
+		        @media screen and (max-width: 1440px) {
+		        	padding: 8% 0px 30px 0px; 
+		        	font-size: @font-size-h3;
+		        }
+			}
+
+			p{
+				line-height: @line-height-computed;
+				font-size: @font-size-base;
+				padding: 15px 0px 10px 0px;
+
+				span.blackshape{
+					padding: 2px 3px 1px 3px;
+					background: @gray;
+					color: @background-color-lighter;
+				}
+
+		        @media screen and (max-width: 1366px) {
+		        	font-size: @font-size-small;
+		        }
+			}
+
+			div.new-shape{
+				width: 100%;
+				margin: 25px 0px;
+				padding: 5px 25px;
+				background: rgba(255, 255, 255, 0.6);
+				border: 3px solid #c3c3c3;
+				border-radius: 4px;
+				font-style: italic;
+
+				p{
+					font-size: @font-size-small;
+					color: @text-color-lighter;
+					text-align: center;
+				}
+
+		        @media screen and (max-width: 1366px) {
+		        	margin: 15px 0px 25px 0px;
+		        }
+			}
+
+			.align-right{
+				padding-top: 35px;
+				text-align: right;
+				font-style: italic;
+
+		        @media screen and (max-width: 1366px) {
+		        	padding-top: 15px;
+		        }
+			}
+		}
+
+		button.md-close {
+			background: transparent;
+			position: absolute;
+			top: 20px;
+			right: 20px;
+			width: 30px;
+			height: 30px;
+			text-indent: -9999px;
+			background-image: url(../img/close-icon.png);
+			background-repeat: no-repeat;
+			background-size: 30px;
+		}
+
+		.container-modal-chat {
+			display: none;
+			position: absolute;
+			padding-top: 200px;
 			bottom: 0px;
-			right: 0px;
-			width: 100%;
+			width: 80%;
+			margin-left: 10%;
 			max-width: 100%;
 			height: 100%;
 			z-index: 2000;
-			background: rgba(255,255,255,.5);
 			-webkit-backface-visibility: hidden;
 			-moz-backface-visibility: hidden;
 			backface-visibility: hidden;
 
-			&.modal-chat, &.modal-welcome{
-				display: none;
+	        @media screen and (max-width: 1470px) {
+				width: 90%;
+				margin-left: 5%;
+	        }
+
+	        @media screen and (max-width: 1366px) {
+				padding-top: 120px;
+	        }
+
+	        @media screen and (max-width: 1280px) {
+				width: 100%;
+				margin-left: 0%;
+				padding-top: 100px;
+	        }
+
+			.md-modal{
+				height: 62%;
+				position: relative;
+				border: 6px solid @black-matrix;
+			}
+
+			.modal-chat{
+				float: left;
 				width: 65%;
-				margin: auto;
-				border: 6px solid #5c5c5c;
+				min-height: 377px;
 
-		        @media screen and (max-width: @screen-lg) {
-					width: 75%;
+		        @media screen and (max-width: 1280px) {
+		        	height: 50%;
+					width: 70%;
 		        }
 			}
 
-			&.modal-chat{
-				width: 55%;
-				height: 50%;
-				min-height: 347px;
+			.modal-chat-fiches{
+				float: right;
+				width: 30%;
+				min-height: 377px;
 
-		        @media screen and (max-width: 1310px) {
-					width: 65%;
+		        @media screen and (max-width: 1280px) {
+		        	height: 50%;
+					float: left;
+					border-left: 0px;
 		        }
-
-		        @media screen and (max-width: 900px) {
-					width: 75%;
-		        }
-			}
-
-			&.modal-welcome{
-				height: 65%;
-				min-height: 675px;
 			}
 		
 			.md-content {
 				position: relative;
-				margin: 0 auto;
 				overflow: hidden;
-				width: 75%;
+				height: 100%;
+				width: 100%;
+				padding: 15px;
 
-				h2{
-					padding: 12% 0px 40px 0px; 
-					font-size: @font-size-h2;
-				}
+				#chatFiche{
+					height: 100%;
 
-				p{
-					line-height: @line-height-computed;
-					font-size: @font-size-base;
-					padding: 15px 0px 10px 0px;
-
-					span.blackshape{
-						padding: 2px 3px 1px 3px;
-						background: @gray;
-						color: @background-color-lighter;
+					fieldset{
+						height: 100%;
 					}
-				}
 
-				div.new-shape{
-					width: 100%;
-					margin-top: 35px;
-					padding: 5px 25px;
-					background: rgba(255, 255, 255, 0.6);
-					border: 3px solid #c3c3c3;
-					border-radius: 4px;
-					font-style: italic;
-
-					p{
+					textarea{
+						padding: 15px;
+						border: none;
+						width: 100%;
+						height: 100%;
+						background: transparent;
 						font-size: @font-size-small;
-						color: @text-color-lighter;
-						text-align: center;
 					}
-				}
 
-				.align-right{
-					padding-top: 35px;
-					text-align: right;
+					input[type="submit"]{
+						padding: 0px;
+						border: none;
+						position: relative;
+						top: -45px;
+						height: 45px;
+						width: 100%;
+						text-transform: uppercase;
+						font-family: @font-gotham-light;
+						font-size: @font-size-small;
+						background: @black-matrix;
+						color: white;
+					}
 				}
 
 				.chat{
 					.chatroom{
-						margin: 70px 0px 0px 0px;
+						width: 75%;
+						margin: 50px auto 0px auto;
 						padding: 0px;
 						min-height: 100px;
 
@@ -668,7 +766,7 @@ html{
 							line-height: 1.4;
 							font-family: @font-gotham-bold;
 							font-size: 32px;
-							color: @text-color-darker;
+							color: @black-matrix;
 							text-transform: uppercase;
 
 					        @media screen and (max-width: 1366px) {
@@ -677,65 +775,74 @@ html{
 						}
 					}
 
-					fieldset{
-						border: none;
-						overflow: hidden;
-						padding-left: 0px;
+					#chatForm{
+						position: absolute;
+						bottom: 15px;
+						left: 15px;
+						right: 15px;
 
-						input{
-							float: left;
-							display: block;
-							width: 100%;
-							height: 40px; 
-							outline: none;
-							padding-left: 15px;
+						fieldset{
 							border: none;
-							background: #f7f7f7;
-							color: #b0afaf;
-						}
+							overflow: hidden;
+							padding-left: 0px;
 
+							input{
+								display: block;
+								height: 45px; 
+								outline: none;
+								border: none;
+							}
 
-						.error-length{
-							clear: both;
-							margin-top: 20px;
-							display: none;
-
-							p{
+							#message{
+								float: left;
+								width: 86%;
 								padding-left: 15px;
-								font-size: @font-size-small;
-								color: #fa3f3f;
+								background: #f7f7f7;
+								//background: red;
+								color: #b0afaf;
+							}
 
-								span.text-lenght{
+							input[type="submit"]{
+								text-transform: uppercase;
+								font-family: @font-gotham-light;
+								font-size: @font-size-small;
+								float: right;
+								width: 12%;
+								background: @black-matrix;
+								color: white;
+							}
+
+
+							.error-length{
+								text-align: center;
+								margin-top: 10px;
+								display: none;
+
+								p{
+									padding-left: 15px;
 									font-size: @font-size-small;
 									color: #fa3f3f;
+
+									span.text-lenght{
+										font-size: @font-size-small;
+										color: #fa3f3f;
+									}
 								}
 							}
-						}
 
-						textarea{
-							position: relative;
-							margin-top: 30px;
-							padding-left: 15px;
-							width: 100%;
-							outline: none;
-							min-height: 150px;
-							max-height: 200px;
-							min-width: 100%;
-							border: none;
-							background: #f7f7f7;
-							color: #b0afaf;
-						}
-
-						button.md-save{
-							float: right;
-							width: 20px;
-							height: 20px;
-							background: transparent;
-							text-indent: -9999px;
-							background-image: url(../img/save-icon.png);
-							background-repeat: no-repeat;
-							background-size: 20px;
-							margin-top: 10px;
+							textarea{
+								position: relative;
+								margin-top: 30px;
+								padding-left: 15px;
+								width: 100%;
+								outline: none;
+								min-height: 150px;
+								max-height: 200px;
+								min-width: 100%;
+								border: none;
+								background: #f7f7f7;
+								color: #b0afaf;
+							}
 						}
 					}
 
@@ -748,19 +855,6 @@ html{
 						}
 					}
 				}
-			}
-
-			button.md-close {
-				background: transparent;
-				position: absolute;
-				top: 20px;
-				right: 20px;
-				width: 30px;
-				height: 30px;
-				text-indent: -9999px;
-				background-image: url(../img/close-icon.png);
-				background-repeat: no-repeat;
-				background-size: 30px;
 			}
 		}
 
