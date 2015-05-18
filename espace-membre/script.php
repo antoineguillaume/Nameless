@@ -93,6 +93,11 @@ include('bdd_connexion.php');
 			}
         }
 
+        $req = $bdd->prepare(" SELECT information FROM fiches WHERE user_a = ? AND id_discussion = ? ");
+        $req->execute(array($idUser, $id_conversation));
+        $info = $req->fetch();
+        $d['information'] = $info['information'];
+
         echo json_encode($d);
 	}
 	else if($_POST['action'] == 'sendMessage')
@@ -116,6 +121,32 @@ include('bdd_connexion.php');
 		$message = trim(strip_tags($_POST['message']));
 		$req = $bdd->prepare("INSERT INTO messages(id_discussion, message_send, time) VALUES(?,?, NOW()) ");
 		$req->execute(array($id_conversation, $message));
+	}
+	else if($_POST['action'] == 'setInformation')
+	{
+		$information = trim( strip_tags ($_POST['information']));
+
+		$req = $bdd->prepare(" SELECT id FROM fiches WHERE id_discussion = ? AND user_a = ? ");
+		$req->execute(array($id_conversation, $idUser));
+		$fiches_count = $req->rowCount();
+
+		if($fiches_count == 0)
+		{
+			$req = $bdd->prepare("INSERT INTO fiches(id_discussion, user_a, information) VALUES(?, ?, ?) ");
+			$req->execute(array($id_conversation, $idUser, $information));
+		}
+		else
+		{
+			$req = $bdd->prepare("UPDATE fiches SET information = ? WHERE user_a = ? AND id_discussion = ? ");
+			$req->execute(array($information, $idUser, $id_conversation));
+		}
+
+        $req = $bdd->prepare(" SELECT information FROM fiches WHERE user_a = ? AND id_discussion = ? ");
+        $req->execute(array($idUser, $id_conversation));
+        $info = $req->fetch();
+        $d['infos'] = $info['information'];
+
+        echo json_encode($d);
 	}
 	else if($_POST['action'] == 'getMessage')
 	{

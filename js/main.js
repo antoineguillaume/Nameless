@@ -273,8 +273,21 @@ $(document).ready(function(){
                     type: 'POST',
                     data: {name_object: nameObj, action: 'createDiscussion'},
                     success: function(data){
+                        $('#fiche').html('');
                         var js = $.parseJSON(data);
+                        var information = js.information;
                         id_conversation = js.id_conversation;
+                        console.log(information);
+                        if(information != null)
+                        {
+                            $('#fiche').html('');
+                            $('#fiche').val(information);
+                            console.log('Information fiche : ' + information);
+                        }
+                        else
+                        {
+                            $('#fiche').val('');
+                        }
                         console.log('ID conversation : ' + id_conversation);
                         chatTime = setInterval(getMessage, 3000);
                         clearInterval(intervalNotification);
@@ -336,24 +349,14 @@ $(document).ready(function(){
     $('.md-close').click(function(){
         intervalNotification = setInterval(getNotification, 10000);
         clearInterval(chatTime);
-
-        // if($('button').hasClass('md-close-chat'))
-        // {
-        //     $.ajax({
-        //         url: 'espace-membre/script.php',
-        //         type: 'POST',
-        //         data: {action: 'setCloseChat', closeToken: 1, id_conversation: id_conversation}
-        //     });
-        // }
-
         camControls.lookSpeed = 0.05;
-        $("#container-exp-1").css({
-            "-webkit-filter" : "blur(0px)",
-            "-moz-filter" : "blur(0px)",
-            "-ms-filter" : "blur(0px)",
-            "-o-filter" : "blur(0px)",
-            "filter" : "blur(0px)"
-        });
+        // $("#container-exp-1").css({
+        //     "-webkit-filter" : "blur(0px)",
+        //     "-moz-filter" : "blur(0px)",
+        //     "-ms-filter" : "blur(0px)",
+        //     "-o-filter" : "blur(0px)",
+        //     "filter" : "blur(0px)"
+        // });
         $(".chatroom li").remove();
         $('.container-modal-chat').fadeOut(400);
         $('.modal-welcome').fadeOut(400);
@@ -384,14 +387,14 @@ $(document).ready(function(){
             $(".modal-welcome").fadeIn(400);
         }
 
-        $("#container-exp-1").css(
-        {
-            "-webkit-filter" : "blur(15px)",
-            "-moz-filter" : "blur(15px)",
-            "-ms-filter" : "blur(15px)",
-            "-o-filter" : "blur(15px)",
-            "filter" : "blur(15px)"
-        });
+        // $("#container-exp-1").css(
+        // {
+        //     "-webkit-filter" : "blur(15px)",
+        //     "-moz-filter" : "blur(15px)",
+        //     "-ms-filter" : "blur(15px)",
+        //     "-o-filter" : "blur(15px)",
+        //     "filter" : "blur(15px)"
+        // });
 
         camControls.lookSpeed = 0.01;
     } 
@@ -414,7 +417,6 @@ $(document).ready(function(){
                 url: "espace-membre/script.php",
                 type: "POST",
                 data: {message: message, action: "sendMessage", id_conversation: id_conversation, notif: notification, name_object: nameObj},
-
                 success: function(data){
                     getMessage();
                     $('#message').val('');
@@ -427,6 +429,31 @@ $(document).ready(function(){
         }
         return false;
     });
+
+    $('#chatFiche').submit(function(e){
+        e.preventDefault();
+        var information = $('#fiche').val();
+
+        if(information.length > 430)
+        {
+            $('.text-lenght').html(information.length);
+            $('.error-length').fadeIn(400);
+            return false;
+        }
+        else if(information != '')
+        {
+            $('.error-length').fadeOut(400);
+            $.ajax({
+                url: "espace-membre/script.php",
+                type: "POST",
+                data: {information: information, action: "setInformation", id_conversation: id_conversation},
+                success: function(data){
+                    var data = $.parseJSON(data);
+                    var infos_fiche = data.infos;
+                    $('.save-informations').fadeIn(400).delay(5000).fadeOut(400);
+                }
+            });
+        }    });
 
     function getMessage(){
         $.ajax({
@@ -447,9 +474,6 @@ $(document).ready(function(){
         return false;
     }
 
-    var intervalNotification = setInterval(getNotification, 10000);
-    //var intervalCloseChat = setInterval(getCloseChat, 7000);
-
     function getNotification(){
         $.ajax({
             url: 'espace-membre/script.php',
@@ -467,10 +491,20 @@ $(document).ready(function(){
         });
     }
 
+    //
+    // Permet de mettre à jour les utilisateurs connectés, les statistiques et les notifications
+    //
+
+    var intervalNotification = setInterval(getNotification, 10000);
+
     setInterval(function(){
         getUserConnected();
         setStatistics();
     }, 10000);
+
+    //
+    // Fonction récupérant dans un tableau tous les utilisateurs connectés
+    //
 
     function getUserConnected(){
         $.ajax({
@@ -494,6 +528,10 @@ $(document).ready(function(){
         });
     }
 
+    //
+    // Fonction permettant d'aller chercher toutes les statistiques de l'expérimentation
+    //
+
     function setStatistics(){
         $.ajax({
             url: 'espace-membre/script.php',
@@ -516,22 +554,9 @@ $(document).ready(function(){
         });
     }
 
-    // function getCloseChat(){
-    //     $.ajax({
-    //         url: 'espace-membre/script.php',
-    //         type: 'POST',
-    //         data: {action : 'getCloseChat', closeToken: 0, id_conversation: id_conversation},
-    //         success: function(data){
-    //             var close = $.parseJSON(data);
-    //             console.log(close.closechat);
-    //             if(close.closechat == 1){
-    //                 $('.modal-chat').fadeOut(400);
-    //                 container.focus();
-    //                 alert("La forme à qui vous parlez s'est déconnectée du chat !");
-    //             }
-    //         }
-    //     });
-    // }
+    //
+    // Popup permettant d'accepter une conversation avec une autre forme
+    //
 
     $('.left-button').click(function(){
         id_conversation = id_room;
@@ -542,10 +567,18 @@ $(document).ready(function(){
         removeNotif();
     });
 
+    //
+    // Popup permettant de refuser une conversation avec une autre forme
+    //
+
     $('.right-button').click(function(){
         $('.popup').fadeOut(400);
         removeNotif();
     });
+
+    //
+    // Fonction permettant, via une requête AJAX, de supprimer la notification lorsque l'utilisateur à chosisis soit d'accepter soit de refuser
+    //
 
     function removeNotif(){
         $.ajax({
@@ -567,6 +600,10 @@ $(document).ready(function(){
 
         renderer.render(scene, camera);
     }
+
+    //
+    // Permet au canvas de se centrer par rapport à la largeur de la fenêtre.
+    //
 
     THREEx.WindowResize(renderer, camera);
 

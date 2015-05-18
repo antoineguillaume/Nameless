@@ -30,9 +30,13 @@
                     <form action="" method="post" id="chatFiche">
                         <fieldset>
                             <textarea name="fiche" id="fiche" placeholder="Sauvegardez des informations sur la forme avec laquelle vous parlez."></textarea>
+                            <div class="error-length"><p class="errors-lign">Votre message doit contenir au maximum 130 caractères et il contient <span class="text-lenght"></span> caractères.</p></div>
                             <input type="submit" value="Save" class="fiche-send" />
                         </fieldset>
                     </form>
+                    <div class="save-informations">
+                        <p>Ces informations ont bien été enregistrées !</p>
+                    </div>
                 </div>
             </div>
             <button class="md-close md-close-chat">Close me!</button>
@@ -100,7 +104,7 @@
             </div>
             <div class="stats">
                 <span class="chiffre2"></span>
-                <p>formes actuellement connectées</p>
+                <p>forme(s) actuellement connectée(s)</p>
             </div>
             <div class="stats">
                 <span class="chiffre3"></span>

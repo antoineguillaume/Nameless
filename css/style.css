@@ -416,7 +416,6 @@ html body .popup p {
 }
 html body .popup .buttons {
   width: 100%;
-  background: green;
   display: block;
   position: relative;
   border-top: 3px solid #e6e6e6;
@@ -536,7 +535,7 @@ html body .modal-welcome .align-right {
 }
 html body button.md-close {
   background: transparent;
-  position: absolute;
+  position: fixed;
   top: 20px;
   right: 20px;
   width: 30px;
@@ -613,6 +612,31 @@ html body .container-modal-chat .md-content {
   width: 100%;
   padding: 15px;
 }
+html body .container-modal-chat .md-content .error-length {
+  text-align: center;
+  margin-top: 10px;
+  display: none;
+}
+html body .container-modal-chat .md-content .error-length p {
+  padding-left: 15px;
+  font-size: 13px;
+  color: #fa3f3f;
+}
+html body .container-modal-chat .md-content .error-length p span.text-lenght {
+  font-size: 13px;
+  color: #fa3f3f;
+}
+html body .container-modal-chat .md-content .save-informations {
+  display: none;
+  position: relative;
+  top: -80px;
+  text-align: center;
+}
+html body .container-modal-chat .md-content .save-informations p {
+  font-style: italic;
+  color: #B5EAC2;
+  font-size: 13px;
+}
 html body .container-modal-chat .md-content #chatFiche {
   height: 100%;
 }
@@ -626,6 +650,7 @@ html body .container-modal-chat .md-content #chatFiche textarea {
   height: 100%;
   background: transparent;
   font-size: 13px;
+  outline: none;
 }
 html body .container-modal-chat .md-content #chatFiche input[type="submit"] {
   padding: 0px;
@@ -639,6 +664,8 @@ html body .container-modal-chat .md-content #chatFiche input[type="submit"] {
   font-size: 13px;
   background: #5c5c5c;
   color: white;
+  outline: none;
+  cursor: pointer;
 }
 html body .container-modal-chat .md-content .chat .chatroom {
   width: 75%;
@@ -690,20 +717,7 @@ html body .container-modal-chat .md-content .chat #chatForm fieldset input[type=
   width: 12%;
   background: #5c5c5c;
   color: white;
-}
-html body .container-modal-chat .md-content .chat #chatForm fieldset .error-length {
-  text-align: center;
-  margin-top: 10px;
-  display: none;
-}
-html body .container-modal-chat .md-content .chat #chatForm fieldset .error-length p {
-  padding-left: 15px;
-  font-size: 13px;
-  color: #fa3f3f;
-}
-html body .container-modal-chat .md-content .chat #chatForm fieldset .error-length p span.text-lenght {
-  font-size: 13px;
-  color: #fa3f3f;
+  cursor: pointer;
 }
 html body .container-modal-chat .md-content .chat #chatForm fieldset textarea {
   position: relative;
