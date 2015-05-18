@@ -10,26 +10,33 @@
         <!-- Création d'un canvas dans ce container -->
         <div id="container-exp-1"></div>
 
-<!--         <div class="connexion-links">
-            <a href="#" class="disconnect">Se déconnecter</a>
-        </div>  -->
-
-        <div class="md-modal modal-chat">
-            <div class="md-content">
-                <div class="chat">
-
-                    <ul class="chatroom"></ul>
-
-                    <form id="chatForm" method="post" action="">
-                       <fieldset>
-                            <div class="container-form">
-                                <input type="text" name="message" id="message" placeholder="Write something..." />
+        <div class="container-modal-chat">
+            <div class="md-modal modal-chat">
+                <div class="md-content">
+                    <div class="chat">
+                        <ul class="chatroom"></ul>
+                        <form id="chatForm" method="post" action="">
+                           <fieldset>
                                 <div class="error-length"><p class="errors-lign">Votre message doit contenir au maximum 130 caractères et il contient <span class="text-lenght"></span> caractères.</p></div>
-                                <!--  <textarea name="fiche" id="fiche" placeholder="You can save here informations you receive from your interlocutor."></textarea>
-                                <button class="md-save">Save</button> -->
-                            </div>
-                       </fieldset>
+                                <input type="text" name="message" id="message" placeholder="Write something..." />
+                                <input type="submit" value="Send" class="chat-send" />
+                           </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="md-modal modal-chat-fiches">
+                <div class="md-content">
+                    <form action="" method="post" id="chatFiche">
+                        <fieldset>
+                            <textarea name="fiche" id="fiche" placeholder="Sauvegardez des informations sur la forme avec laquelle vous parlez."></textarea>
+                            <div class="error-length"><p class="errors-lign">Votre message doit contenir au maximum 130 caractères et il contient <span class="text-lenght"></span> caractères.</p></div>
+                            <input type="submit" value="Save" class="fiche-send" />
+                        </fieldset>
                     </form>
+                    <div class="save-informations">
+                        <p>Ces informations ont bien été enregistrées !</p>
+                    </div>
                 </div>
             </div>
             <button class="md-close md-close-chat">Close me!</button>
@@ -43,7 +50,7 @@
             </div>
         </div>
 
-        <div class="md-modal modal-welcome">
+        <div class="modal-welcome">
             <div class="md-content">
                 <h2>Bienvenue,</h2>
                 <p>Vous êtes actuellement dans une grande matrice de formes dans laquelle vous allez voyager. Chaque forme que vous voyez correspond à un utilisateur. Si vous voulez parler à cette personne, interragissez avec sa forme. Essayez de créer et de garder les connexions que vous faites avec les autres ! Chaque connexion contribue à la création de la matrice.</p>
@@ -97,7 +104,7 @@
             </div>
             <div class="stats">
                 <span class="chiffre2"></span>
-                <p>formes actuellement connectées</p>
+                <p>forme(s) actuellement connectée(s)</p>
             </div>
             <div class="stats">
                 <span class="chiffre3"></span>
@@ -121,5 +128,4 @@
     <script type="text/javascript" src="three/tween.js"></script>
     <script type="text/javascript" src="js/THREEx.WindowResize.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
-    <script type="text/javascript" src="js/activite.js"></script>
 </html>
