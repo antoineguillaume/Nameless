@@ -106,6 +106,18 @@ include('bdd_connexion.php');
 		$notif = trim(strip_tags($_POST['notif']));
 		$link_value = 1;
 
+		$req = $bdd->prepare(" SELECT user_a, user_b FROM discussions WHERE id = ? ");
+		$req->execute(array($id_conversation));
+		$data = $req->fetch();
+		if($data['user_a'] != "$idUser")
+		{
+			$user_recept = $data['user_a'];
+		}
+		else if ($data['user_b'] != "$idUser")
+		{
+			$user_recept = $data['user_b'];
+		}
+
 		$req = $bdd->prepare("SELECT id FROM updatecontent WHERE user_send = ?");
 	    $req->execute(array($nameObj));
 	    $notif_exist = $req->rowCount();
@@ -119,8 +131,8 @@ include('bdd_connexion.php');
 	    $req->execute(array($link_value, $id_conversation));
 
 		$message = trim(strip_tags($_POST['message']));
-		$req = $bdd->prepare("INSERT INTO messages(id_discussion, message_send, time) VALUES(?,?, NOW()) ");
-		$req->execute(array($id_conversation, $message));
+		$req = $bdd->prepare("INSERT INTO messages(id_discussion, message_send, user_emit, user_recept, time) VALUES(?,?,?,?, NOW()) ");
+		$req->execute(array($id_conversation, $message, $idUser, $user_recept));
 	}
 	else if($_POST['action'] == 'setInformation')
 	{
@@ -199,18 +211,6 @@ include('bdd_connexion.php');
 		$req = $bdd->prepare(" UPDATE discussions SET closechat = ? WHERE id = ?  ");
 		$req->execute(array($closeToken, $id_conversation));
 	}
-	else if($_POST['action'] == 'isConnected')
-	{
-		$connected = 1;
-		$req = $bdd->prepare(" SELECT id FROM membres WHERE connected = ? ");
-		$req->execute(array($connected));
-		while($user = $req->fetch())
-		{
-			$d['user_connected'][] = $user['id'];
-		}
-
-		echo json_encode($d);
-	}
 	else if($_POST['action'] == 'isNotConnected')
 	{
 		$connected = 0;
@@ -219,6 +219,28 @@ include('bdd_connexion.php');
 	}
 	else if($_POST['action'] == 'setStatistics')
 	{
+		$time = date("Y-m-d H:i:s");
+		$duration = 30;
+		$dateinsec = strtotime($time);
+		$newdate = $dateinsec - $duration;
+		$current_time = date('Y-m-d H:i:s',$newdate);
+		$req = $bdd->prepare(" SELECT user_emit, user_recept FROM messages WHERE time > ? ");
+		$req->execute(array($current_time));
+		$d['date'][] = $data['user_recept'];
+		while($data = $req->fetch())
+		{
+			$d['user_recept'][] = $data['user_recept'];
+			$d['user_emit'][] = $data['user_emit'];
+		}
+		
+		$connected = 1;
+		$req = $bdd->prepare(" SELECT id FROM membres WHERE connected = ? ");
+		$req->execute(array($connected));
+		while($user = $req->fetch())
+		{
+			$d['user_connected'][] = $user['id'];
+		}
+
 		// Nombres de formes dans la matrice
 		$req = $bdd->prepare(" SELECT id FROM membres ");
 		$req->execute();

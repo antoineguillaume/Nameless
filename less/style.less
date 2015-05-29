@@ -5,40 +5,40 @@
 /*  ---------------------  VARIABLES  ---------------------  */
 
 
-@font-gotham-bold:        'GothamBold', Helvetica, Arial, sans-serif;
-@font-gotham-light:       'GothamLight', Helvetica, Arial, sans-serif;
-@font-gotham-medium:      'GothamMedium', Helvetica, Arial, sans-serif;
-@font-corda-light:        'cordalight', serif, Arial;
+@font-gotham-bold:           'GothamBold', Helvetica, Arial, sans-serif;
+@font-gotham-light:          'GothamLight', Helvetica, Arial, sans-serif;
+@font-gotham-medium:         'GothamMedium', Helvetica, Arial, sans-serif;
+@font-corda-light:           'cordalight', serif, Arial;
 
 
-@font-size-base:          15px;
-@font-size-large:         ceil((@font-size-base * 1.25)); // ~18px
-@font-size-small:         ceil((@font-size-base * 0.85)); // ~12px
-@font-size-small-xs:      ceil((@font-size-base * 0.80)); // ~12px
-@font-size-tiny:          ceil((@font-size-base * 0.75)); // 
+@font-size-base:             15px;
+@font-size-large:            ceil((@font-size-base * 1.25)); // ~19px
+@font-size-small:            ceil((@font-size-base * 0.85)); // ~13px
+@font-size-small-xs:         ceil((@font-size-base * 0.80)); // ~12px
+@font-size-tiny:             ceil((@font-size-base * 0.75)); // ~11px
 
-@font-size-h1:            floor((@font-size-base * 3.6)); // ~36px
-@font-size-h2:            floor((@font-size-base * 2.8)); // ~30px
-@font-size-h3:            ceil((@font-size-base * 2.5)); // ~24px
-@font-size-h4:            ceil((@font-size-base * 2.25)); // ~18px
-@font-size-h5:            @font-size-base;
-@font-size-h6:            ceil((@font-size-base * 0.85)); // ~12px 
+@font-size-h1:               floor((@font-size-base * 3.6)); // ~54px
+@font-size-h2:               floor((@font-size-base * 2.8)); // ~42px
+@font-size-h3:               ceil((@font-size-base * 2.5)); // ~38px
+@font-size-h4:               ceil((@font-size-base * 2.25)); // ~34px
+@font-size-h5:               @font-size-base; // 15px
+@font-size-h6:               ceil((@font-size-base * 0.85)); // ~13px
 
-@gray-base:              #000;
-@gray-darker:            lighten(@gray-base, 13.5%); // #222
-@gray-dark:              lighten(@gray-base, 20%);   // #333
-@gray:                   lighten(@gray-base, 33.5%); // #555
-@gray-light:             lighten(@gray-base, 46.7%); // #777
-@gray-lighter:           lighten(@gray-base, 95.5%); // #eee
+@gray-base:                  #000;
+@gray-darker:                lighten(@gray-base, 13.5%); // #222
+@gray-dark:                  lighten(@gray-base, 20%);   // #333
+@gray:                       lighten(@gray-base, 33.5%); // #555
+@gray-light:                 lighten(@gray-base, 46.7%); // #777
+@gray-lighter:               lighten(@gray-base, 95.5%); // #eee
 
-@black-matrix:             #5c5c5c;
-@text-color:               #4c4c4c;
-@text-color-darker:        #252525;
-@text-color-lighter:       #b0afaf;
-@background-color-lighter: #f7f7f7;
+@black-matrix:               #5c5c5c;
+@text-color:                 #4c4c4c;
+@text-color-darker:          #252525;
+@text-color-lighter:         #b0afaf;
+@background-color-lighter:   #f7f7f7;
 
-@line-height-base:        1.6; // 20/14
-@line-height-computed:    floor((@font-size-base * @line-height-base)); // ~20px
+@line-height-base:           1.6;
+@line-height-computed:       floor((@font-size-base * @line-height-base)); // ~24px
 
 @screen-xs:                  480px;
 @screen-xs-min:              @screen-xs;
@@ -433,6 +433,17 @@ html{
 			border-top: 6px solid @black-matrix;
 			border-right: 6px solid @black-matrix;
 			border-left: 6px solid @black-matrix;
+			opacity: 0.6;
+
+			-webkit-transition: all .3s;
+			-moz-transition: all .3s;
+			-ms-transition: all .3s;
+			-o-transition: all .3s;
+			transition: all .3s;
+
+			&:hover{
+				opacity: 1;
+			}
 
 	        @media screen and (max-width: 1470px) {
 				width: 90%;
@@ -445,7 +456,7 @@ html{
 	        }
 
 			.stats{
-				background: rgba(255, 255, 255, 0.6);
+				background: rgba(255, 255, 255, 0.3);
 				display: block;
 				position: relative;
 				width: 20%;

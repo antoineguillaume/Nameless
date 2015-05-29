@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    var container, renderer, scene, camera, mesh, spGroup, hullMesh, points, delta, clock, camControls, hullGeometry, notification;
+    var container, renderer, scene, camera, mesh, spGroup, hullMesh, points, delta, clock, camControls, hullGeometry, notification, selectedObj, user_recept, user_emit;
     var tween, objectPosition, jsonPosition, ID, n, nameObj, chatTime, id_conversation, setMatrixJson, smjPos, id_room, statut, user_a, user_b;
     var arrayShape = [], arrayName = [], tab_user_connected = [];
     var lastid = 0;
@@ -104,7 +104,6 @@ $(document).ready(function(){
                         }
                     }
                     setStatistics();
-                    getUserConnected();
                 },
                 complete: function(data){
                     ID = +setMatrixJson.ID;
@@ -246,7 +245,7 @@ $(document).ready(function(){
 
         if (intersects.length > 0 && intersects[0].object != arrayShape[ID])
         {
-            var selectedObj = intersects[0].object;
+            selectedObj = intersects[0].object;
             nameObj = selectedObj.name;
 
             if(nameObj == 'logout')
@@ -259,7 +258,7 @@ $(document).ready(function(){
                         document.location.href="espace-membre/deconnexion.php";
                     }
                 });
-            } 
+            }
             else
             {
                 //  console.log(camControls.target);
@@ -316,31 +315,27 @@ $(document).ready(function(){
                     }
                     ).onComplete(function(){
 
-                        camera.rotation = selectedObj.position;
-                        //camControls.object.lookAt(selectedObj.position);
-                      //  camControls.object.lookAt(selectedObj);
-                      //  camControls.target.setX(selectedObj.position.x);
-                      //  camControls.target.setY(selectedObj.position.y);
-                      //  camControls.target.setZ(selectedObj.position.z);
-
-                        // console.log(camControls.target);
-                        // console.log(selectedObj.position);
                         openModal('chat');
 
-                        var constructLign = new THREE.Geometry();
-                        constructLign.vertices.push(new THREE.Vector3( arrayShape[ID].position.x, arrayShape[ID].position.y, arrayShape[ID].position.z ), new THREE.Vector3( selectedObj.position.x, selectedObj.position.y, selectedObj.position.z ));
-
-                        for (var i = 0; i < constructLign.vertices.length; i++) {
-                            constructLign.colors[i] = new THREE.Color(Math.random(), Math.random(), Math.random());
-                        }
-
-                        var lign = new THREE.Line( constructLign, new THREE.LineBasicMaterial({ transparent: true, opacity: 0.3, color: 0xffffff, vertexColors: THREE.VertexColors }), THREE.LinePieces);
-                        scene.add(lign);
+                        $('.statistiques').css({
+                            '-webkit-transform' : 'translateY(90px)',
+                            '-moz-transform' : 'translateY(90px)',
+                            '-ms-transform' : 'translateY(90px)',
+                            '-o-transform' : 'translateY(90px)',
+                            'transform' : 'translateY(90px)'
+                        });
                     }).start();
                 } 
                 else
                 {
                     openModal('chat');
+                    $('.statistiques').css({
+                        '-webkit-transform' : 'translateY(90px)',
+                        '-moz-transform' : 'translateY(90px)',
+                        '-ms-transform' : 'translateY(90px)',
+                        '-o-transform' : 'translateY(90px)',
+                        'transform' : 'translateY(90px)'
+                    });
                 }
             }                           
         }
@@ -360,6 +355,15 @@ $(document).ready(function(){
         $(".chatroom li").remove();
         $('.container-modal-chat').fadeOut(400);
         $('.modal-welcome').fadeOut(400);
+
+        $('.statistiques').css({
+            '-webkit-transform' : 'translateY(0px)',
+            '-moz-transform' : 'translateY(0px)',
+            '-ms-transform' : 'translateY(0px)',
+            '-o-transform' : 'translateY(0px)',
+            'transform' : 'translateY(0px)'
+        });
+
         removeNotif();
         container.focus();
         return false;
@@ -387,15 +391,6 @@ $(document).ready(function(){
             $(".modal-welcome").fadeIn(400);
         }
 
-        // $("#container-exp-1").css(
-        // {
-        //     "-webkit-filter" : "blur(15px)",
-        //     "-moz-filter" : "blur(15px)",
-        //     "-ms-filter" : "blur(15px)",
-        //     "-o-filter" : "blur(15px)",
-        //     "filter" : "blur(15px)"
-        // });
-
         camControls.lookSpeed = 0.01;
     } 
 
@@ -421,6 +416,44 @@ $(document).ready(function(){
                     getMessage();
                     $('#message').val('');
                     $('#message').focus();
+
+                    var shape_transit_material = new THREE.MeshNormalMaterial({color: 0xe8e8e8, transparent: true, opacity: 0.2});
+                    var shape_transit = new THREE.Mesh(new THREE.SphereGeometry(2, 5, 5), shape_transit_material);
+                    shape_transit.position.set(arrayShape[ID].position.x, arrayShape[ID].position.y, arrayShape[ID].position.z);
+                    shape_transit.name = 'shape_transit';
+                    scene.add(shape_transit);
+
+                    var constructLign = new THREE.Geometry();
+                    constructLign.vertices.push(new THREE.Vector3( arrayShape[ID].position.x, arrayShape[ID].position.y, arrayShape[ID].position.z ), new THREE.Vector3( selectedObj.position.x, selectedObj.position.y, selectedObj.position.z ));
+
+                    for (var i = 0; i < constructLign.vertices.length; i++) {
+                        constructLign.colors[i] = new THREE.Color(Math.random(), Math.random(), Math.random());
+                    }
+
+                    var lign = new THREE.Line( constructLign, new THREE.LineBasicMaterial({ transparent: true, opacity: 0.3, color: 0xffffff, vertexColors: THREE.VertexColors }), THREE.LinePieces);
+                    scene.add(lign);
+
+                    tween = new TWEEN.Tween(
+                    { 
+                        x: shape_transit.position.x,
+                        y: shape_transit.position.y,
+                        z: shape_transit.position.z
+                    }
+                    ).to(
+                    {
+                        x: selectedObj.position.x,
+                        y: selectedObj.position.y,
+                        z: selectedObj.position.z
+                    }, 4000 )
+                    .easing( TWEEN.Easing.Sinusoidal.In ).onUpdate(function()
+                    {
+                        shape_transit.position.x = this.x;
+                        shape_transit.position.y = this.y;
+                        shape_transit.position.z = this.z;
+                    }
+                    ).onComplete(function(){
+                        scene.remove(shape_transit);
+                    }).start();
                 }
             });
         }
@@ -497,36 +530,7 @@ $(document).ready(function(){
 
     var intervalNotification = setInterval(getNotification, 10000);
 
-    setInterval(function(){
-        getUserConnected();
-        setStatistics();
-    }, 10000);
-
-    //
-    // Fonction récupérant dans un tableau tous les utilisateurs connectés
-    //
-
-    function getUserConnected(){
-        $.ajax({
-            url: 'espace-membre/script.php',
-            type: 'POST',
-            data: 'action=' + 'isConnected',
-            success: function(data){
-                var j = $.parseJSON(data);
-                var user_connected = j.user_connected;
-                tab_user_connected = [];
-                tab_user_connected.push(logoutShape);
-
-                for(i=0; i<user_connected.length; i++)
-                {
-                    var us_co = user_connected[i];
-                    tab_user_connected.push(arrayShape[us_co]);
-                    tab_user_connected[i].material.opacity = 0.2;
-                }
-
-            }
-        });
-    }
+    setInterval(setStatistics, 10000);
 
     //
     // Fonction permettant d'aller chercher toutes les statistiques de l'expérimentation
@@ -544,6 +548,54 @@ $(document).ready(function(){
                 var nbr_link_created = j.nbr_link_created;
                 var nbr_linkPerso_created = j.nbr_linkPerso_created;
                 var nbr_msg_sended = j.nbr_msg_sended;
+                var user_connected = j.user_connected;
+                user_recept = j.user_recept;
+                user_emit = j.user_emit;
+                tab_user_connected = [];
+                tab_user_connected.push(logoutShape);
+
+                if(j.user_recept != null && j.user_emit != null){
+                    console.log(user_recept);
+                    console.log(user_emit);
+
+                    for(e=0; e<j.user_recept.length; e++)
+                    {
+                        var shape_transit_material = new THREE.MeshNormalMaterial({color: 0xe8e8e8, transparent: true, opacity: 0.2});
+                        var shape_transit = new THREE.Mesh(new THREE.SphereGeometry(2, 5, 5), shape_transit_material);
+                        shape_transit.position.set(arrayShape[user_emit[e]].position.x, arrayShape[user_emit[e]].position.y, arrayShape[user_emit[e]].position.z);
+                        shape_transit.name = 'shape_transit';
+                        scene.add(shape_transit);
+
+                        tween = new TWEEN.Tween(
+                        { 
+                            x: shape_transit.position.x,
+                            y: shape_transit.position.y,
+                            z: shape_transit.position.z
+                        }
+                        ).to(
+                        {
+                            x: arrayShape[user_recept[e]].position.x,
+                            y: arrayShape[user_recept[e]].position.y,
+                            z: arrayShape[user_recept[e]].position.z
+                        }, 4000 )
+                        .easing( TWEEN.Easing.Sinusoidal.In ).onUpdate(function()
+                        {
+                            shape_transit.position.x = this.x;
+                            shape_transit.position.y = this.y;
+                            shape_transit.position.z = this.z;
+                        }
+                        ).onComplete(function(){
+                            scene.remove(shape_transit);
+                        }).start();
+                    }
+                }
+
+                for(i=0; i<user_connected.length; i++)
+                {
+                    var us_co = user_connected[i];
+                    tab_user_connected.push(arrayShape[us_co]);
+                    tab_user_connected[i].material.opacity = 0.2;
+                }
 
                 $('.chiffre1').html(nbr_shapes);
                 $('.chiffre2').html(nbr_shapes_connected);
@@ -601,35 +653,48 @@ $(document).ready(function(){
         renderer.render(scene, camera);
     }
 
+    var change_interface = new Konami(function(){
+        function color(){
+            var color = (Math.random() * 0xFF4444);
+            renderer.setClearColor(new THREE.Color(color, 1.0));
+        }
+
+        var sound = new Audio("sound/nightmare.wav");
+        sound.loop = true;
+        sound.play();
+
+        setInterval(color, 100);
+    });
+
     //
     // Permet au canvas de se centrer par rapport à la largeur de la fenêtre.
     //
 
     THREEx.WindowResize(renderer, camera);
 
-    // var x, y;
-    // $('body').mouseleave(function(e){
-    //     x = 0;
-    //     y = 0;
-    // });
+    var x, y;
+    $('body').mouseleave(function(e){
+        x = 0;
+        y = 0;
+    });
 
-    // $('body').mouseenter(function(e){
-    //     x = 1;
-    //     y = 1;
-    // });
+    $('body').mouseenter(function(e){
+        x = 1;
+        y = 1;
+    });
 
-    // window.onbeforeunload = closeIt;
+    window.onbeforeunload = closeIt;
     
-    // function closeIt(e){
-    //     if(!x && !y){
-    //         $.ajax({
-    //             url: 'espace-membre/script.php',
-    //             type: 'POST',
-    //             data: 'action=' + 'isNotConnected',
-    //             success: function(data){
-    //                 document.location.href="espace-membre/deconnexion.php";
-    //             }
-    //         });
-    //     }
-    // }
+    function closeIt(e){
+        if(!x && !y){
+            $.ajax({
+                url: 'espace-membre/script.php',
+                type: 'POST',
+                data: 'action=' + 'isNotConnected',
+                success: function(data){
+                    document.location.href="espace-membre/deconnexion.php";
+                }
+            });
+        }
+    }
 });
