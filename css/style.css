@@ -114,9 +114,10 @@ html body .container header {
   margin: 100px auto 40px auto;
   width: 700px;
 }
-html body .container header p {
+html body .container header p.intro {
+  z-index: 300;
   text-align: center;
-  font-size: 12px;
+  font-size: 14px;
   color: #b0afaf;
   font-style: italic;
 }
@@ -328,9 +329,9 @@ html body .statistiques {
   z-index: 2000;
   display: block;
   width: 80%;
-  border-top: 6px solid #5c5c5c;
-  border-right: 6px solid #5c5c5c;
-  border-left: 6px solid #5c5c5c;
+  border-top: 6px solid #9E9E9E;
+  border-right: 6px solid #9E9E9E;
+  border-left: 6px solid #9E9E9E;
   opacity: 0.6;
   -webkit-transition: all .3s;
   -moz-transition: all .3s;
@@ -375,7 +376,7 @@ html body .statistiques .stats span {
   float: left;
   font-family: 'GothamBold', Helvetica, Arial, sans-serif;
   font-size: 34px;
-  color: #5c5c5c;
+  color: #9E9E9E;
 }
 @media screen and (max-width: 1076px) {
   html body .statistiques .stats span {
@@ -793,4 +794,39 @@ html body .content .connexion a {
   padding-bottom: 2px;
   text-decoration: none;
   border-bottom: 1px dotted black;
+}
+html body .pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+html body .pace.pace-inactive .pace-progress {
+  display: none;
+}
+html body .pace .pace-progress {
+  position: fixed;
+  z-index: 2000;
+  top: 50%;
+  margin-top: -50px;
+  left: 50%;
+  margin-left: -50px;
+  height: 100px;
+  width: 100px;
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  -ms-transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important;
+}
+html body .pace .pace-progress:after {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  content: attr(data-progress-text);
+  font-family: 'cordalight', serif, Arial;
+  font-size: 15px;
+  line-height: 1;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.2);
 }

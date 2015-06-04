@@ -223,7 +223,7 @@ $(document).ready(function(){
         });
 
         hullGeometry = new THREE.ConvexGeometry(points);
-        hullMesh = new THREE.Mesh(hullGeometry, new THREE.MeshNormalMaterial({color: 0xe8e8e8, transparent: true, opacity: 0.08}));
+        hullMesh = new THREE.Mesh(hullGeometry, new THREE.MeshNormalMaterial({color: 0xe8e8e8, transparent: true, opacity: 0.14}));
         
         scene.add(hullMesh);
     }
@@ -560,7 +560,7 @@ $(document).ready(function(){
 
                     for(e=0; e<j.user_recept.length; e++)
                     {
-                        var shape_transit_material = new THREE.MeshNormalMaterial({color: 0xe8e8e8, transparent: true, opacity: 0.2});
+                        var shape_transit_material = new THREE.MeshNormalMaterial({color: 0xe8e8e8, transparent: true, opacity: 0.3});
                         var shape_transit = new THREE.Mesh(new THREE.SphereGeometry(2, 5, 5), shape_transit_material);
                         shape_transit.position.set(arrayShape[user_emit[e]].position.x, arrayShape[user_emit[e]].position.y, arrayShape[user_emit[e]].position.z);
                         shape_transit.name = 'shape_transit';

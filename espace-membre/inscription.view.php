@@ -81,7 +81,7 @@ include('bdd_connexion.php');
         <div id="container-exp-1"></div>
         <div class="container">
           <header>
-                <p>“ Bienvenue dans la préface matricielle. Je vous offre une opportunité, celle de participer à une expérience immersive. Je vous offre l’occasion de sortir de ce monde endossé de préjugés. Découvrez cet environnement où l’anonymat couvre votre identité. ”</p>
+                <p>“  Bienvenue dans la préface matricielle. Je vous offre une opportunité, celle de participer à une expérience immersive. Soyez les artisants d’une oeuvre d’art collective. ”</p>
               <h2>Inscription</h2>
           </header>
           <main>
@@ -131,6 +131,7 @@ include('bdd_connexion.php');
           </footer>
         </div>        
     </body>
+    <script type="text/javascript" src="../js/pace.min.js"></script>
     <script type="text/javascript" src="../three/three.min.js"></script>
     <script type="text/javascript" src="../js/libs/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="../three/ConvexGeometry.js"></script>

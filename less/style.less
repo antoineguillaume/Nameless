@@ -14,7 +14,6 @@
 @font-size-base:             15px;
 @font-size-large:            ceil((@font-size-base * 1.25)); // ~19px
 @font-size-small:            ceil((@font-size-base * 0.85)); // ~13px
-@font-size-small-xs:         ceil((@font-size-base * 0.80)); // ~12px
 @font-size-tiny:             ceil((@font-size-base * 0.75)); // ~11px
 
 @font-size-h1:               floor((@font-size-base * 3.6)); // ~54px
@@ -182,9 +181,10 @@ html{
 				margin: 100px auto 40px auto;
 				width: 700px;
 
-				p{
+				p.intro{
+					z-index: 300;
 					text-align: center;
-					font-size: @font-size-small-xs;
+					font-size: 14px;
 					color: @text-color-lighter;
 					font-style: italic;
 				}
@@ -430,9 +430,9 @@ html{
 			z-index: 2000;
 			display: block;
 			width: 80%;
-			border-top: 6px solid @black-matrix;
-			border-right: 6px solid @black-matrix;
-			border-left: 6px solid @black-matrix;
+			border-top: 6px solid #9E9E9E;
+			border-right: 6px solid #9E9E9E;
+			border-left: 6px solid #9E9E9E;
 			opacity: 0.6;
 
 			-webkit-transition: all .3s;
@@ -477,7 +477,7 @@ html{
 					float: left;
 					font-family: @font-gotham-bold;
 					font-size: @font-size-h4;
-					color: @black-matrix;
+					color: #9E9E9E;
 
 			        @media screen and (max-width: 1076px) {
 			        	font-size: @font-size-h4;
@@ -938,6 +938,47 @@ html{
 				}
 			}
 		}
+
+		.pace {
+		  -webkit-pointer-events: none;
+		  pointer-events: none;
+
+		  -webkit-user-select: none;
+		  -moz-user-select: none;
+		  user-select: none;
+		}
+
+		.pace.pace-inactive .pace-progress {
+		  display: none;
+		}
+
+		.pace .pace-progress {
+		  position: fixed;
+		  z-index: 2000;
+		  top: 50%;
+		  margin-top: -50px;
+		  left: 50%;
+		  margin-left: -50px;
+		  height: 100px;
+		  width: 100px;
+
+		  -webkit-transform: translate3d(0, 0, 0) !important;
+		  -ms-transform: translate3d(0, 0, 0) !important;
+		  transform: translate3d(0, 0, 0) !important;
+		}
+
+		.pace .pace-progress:after {
+		  display: block;
+		  position: absolute;
+		  top: 50%;
+		  right: 50%;
+		  content: attr(data-progress-text);
+		  font-family: @font-corda-light;
+		  font-size: 15px;
+		  line-height: 1;
+		  text-align: center;
+		  color: rgba(0, 0, 0, 0.19999999999999996);
+}
 	}
 }
 
