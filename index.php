@@ -38,6 +38,9 @@ if($_SESSION['logged_in'] != 'ok')
 						$req = $bdd->prepare(" UPDATE membres SET connected = ? WHERE id = ? ");
 						$req->execute(array($connected, $_SESSION['id']));
 					}
+
+					$req = $bdd->prepare(" UPDATE membres SET last_activity = NOW() WHERE id = ? ");
+					$req->execute(array($_SESSION['id']));
 				}
 
 	            sleep(3);

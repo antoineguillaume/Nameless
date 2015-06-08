@@ -2,29 +2,32 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8">
-        <meta name="description" content="Antoine Guillaume, développeur Front-End.">
+        <title>Connexion | Nameless</title>
+        <meta name="description" content="Connexion au prototype Nameless qui est un réseau fonctionnel de discussions. Il invite ses utilisateurs à créer des liens de manière à former une œuvre collective en trois dimensions. Ce réseau est essentiellement basé sur les échanges et le mouvement.">
+        <meta name="author" content="Antoine Guillaume" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <!-- Favicon -->
         <link rel="icon" type="image/png" href="img/favicon.png" />
-        <title>Connexion | Nameless | Antoine Guillaume</title>
 
-        <script type="text/javascript" src="js/detector.js"></script>
-        <script type="text/javascript" src="js/localStorage.js"></script>
+        <!-- Javascript -->
+        <script type="text/javascript" src="js/min/detector-min.js"></script>
+        <script type="text/javascript" src="js/min/localStorage-min.js"></script>
 
-        <!--           Feuille de style              -->
-
+        <!-- CSS -->
         <link rel="stylesheet" href="css/master.css">
-
-         <!--          END Feuille de style          -->
     </head>
     <body role="document">
+        <noscript>
+            L'activation du javascript est indispensable au bon fonctionnement de cette application web !
+        </noscript>
         <div id="container-exp-1"></div>
         <div class="container">
             <header>
-                <p class="intro"><span>“</span>  Bienvenue dans la préface matricielle. Je vous offre une opportunité, celle de participer à une expérience immersive. Soyez les artisants d’une oeuvre d’art collective. <span>”</span></p>
-                <h2>Connexion</h2>
+                <p class="intro">“  Bienvenue dans la préface matricielle. Je vous offre une opportunité, celle de participer à une expérience immersive. Créez des liens en participant à l’élaboration d’une oeuvre collective. ”</p>
             </header>
             <main>
+                <h2>Connexion</h2>
                 <form action="" method="post" class="inscription-form connexion-form">
                     <fieldset>
                         <ol>
@@ -56,16 +59,15 @@
                 </div>
                 <div class="tooltip">
                     <div class="arrow-up"></div>
-                    <div class="text">Ce projet est une expérimentation que j’ai réalisé dans la cadre de mes études. Ce travail a pour but d’expérimenter l’implémentation de la 3D dans un navigateur web, grâce notamment, à la librairie <a href="http://threejs.org/" target="_blank">Three.js</a>. Ce projet vous permet de vivre une expérience immersive dans un monde en 3 dimensions. Chacune des formes que vous verrez fait référence à un utilisateur.</div>
+                    <div class="text">Ce projet est une expérimentation que j’ai réalisé dans la cadre de mes études. Ce travail a pour but d’expérimenter l’implémentation de la 3D dans un navigateur web, grâce notamment, à la librairie <a href="http://threejs.org/" target="_blank">Three.js</a>. Ce projet vous permet de vivre une expérience immersive dans un monde en 3 dimensions. <a href="https://medium.com/@AKG_Antoine/nameless-99f877e7933b" target="_blank">Un article a été écrit à ce sujet et vous permettra d'en savoir plus.</a></div>
                 </div>
             </footer>
         </div>         
     </body>
-    <script type="text/javascript" src="js/pace.min.js"></script>
     <script type="text/javascript" src="three/three.min.js"></script>
     <script type="text/javascript" src="js/libs/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="three/ConvexGeometry.js"></script>
     <script type="text/javascript" src="three/tween.js"></script>
-    <script type="text/javascript" src="js/THREEx.WindowResize.js"></script>
-    <script type="text/javascript" src="js/inscription.js"></script>
+    <script type="text/javascript" src="js/min/THREEx.WindowResize-min.js"></script>
+    <script type="text/javascript" src="js/min/inscription-min.js"></script>
 </html>

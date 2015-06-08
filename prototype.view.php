@@ -1,8 +1,16 @@
 <!doctype html>
 <html>
     <head>
-        <title>Nameless | Antoine Guillaume</title>
         <meta charset="utf-8">
+        <title>Nameless</title>
+        <meta name="description" content="Nameless est un réseau fonctionnel de discussions qui invite ses utilisateurs à créer des liens de manière à former une œuvre collective en trois dimensions. Ce réseau est essentiellement basé sur les échanges et le mouvement." />
+        <meta name="author" content="Antoine Guillaume" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="img/favicon.png" />
+
+        <!-- CSS -->
         <link rel="stylesheet" href="css/master.css">
     </head>
     <body>
@@ -127,6 +135,6 @@
     <script type="text/javascript" src="three/FirstPersonControls.js"></script>
     <script type="text/javascript" src="three/tween.js"></script>
     <script type="text/javascript" src="js/THREEx.WindowResize.js"></script>
-    <script type="text/javascript" src="js/statistiques.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/min/statistiques-min.js"></script>
+    <script type="text/javascript" src="js/min/main-min.js"></script>
 </html>

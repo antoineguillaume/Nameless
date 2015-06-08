@@ -7,6 +7,22 @@ include('bdd_connexion.php');
 	$nameObj = trim( strip_tags ($_POST['name_object']));
 	$id_conversation = trim( strip_tags ($_POST['id_conversation']));
 
+	// $date = strtotime(date("Y-m-d H:i:s"));
+	// $expiration = 20;
+	// $InactiveTime = $date - $expiration;
+	// $current_time = date('Y-m-d H:i:s',$InactiveTime);
+	// $req = $bdd->prepare(" SELECT last_activity FROM membres WHERE id = ? AND last_activity > ? ");
+	// $req->execute(array($idUser, $current_time));
+	// $last_activity = $req->rowCount();
+	
+ //    if ($last_activity == 0) {
+	// 	$connected = 0;
+	// 	$req = $bdd->prepare(" UPDATE membres SET connected = ? WHERE id = ? ");
+	// 	$req->execute(array($connected, $idUser));
+	//     header('Location: ../index.php');
+ //    }
+
+
 	if($_POST['action'] == 'newMember')
 	{
 		$new = 1;
@@ -133,6 +149,9 @@ include('bdd_connexion.php');
 		$message = trim(strip_tags($_POST['message']));
 		$req = $bdd->prepare("INSERT INTO messages(id_discussion, message_send, user_emit, user_recept, time) VALUES(?,?,?,?, NOW()) ");
 		$req->execute(array($id_conversation, $message, $idUser, $user_recept));
+
+		$req = $bdd->prepare(" UPDATE membres SET last_activity = NOW() WHERE id = ? ");
+		$req->execute(array($idUser));
 	}
 	else if($_POST['action'] == 'setInformation')
 	{

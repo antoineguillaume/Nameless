@@ -99,7 +99,7 @@ $(document).ready(function(){
                                 constructLign.colors[a] = new THREE.Color(Math.random(), Math.random(), Math.random());
                             }
 
-                            var lign = new THREE.Line( constructLign, new THREE.LineBasicMaterial({ transparent: true, opacity: 0.2, color: 0xffffff, vertexColors: THREE.VertexColors }), THREE.LinePieces);
+                            var lign = new THREE.Line( constructLign, new THREE.LineBasicMaterial({ transparent: true, opacity: 0.3, color: 0xffffff, vertexColors: THREE.VertexColors }), THREE.LinePieces);
                             scene.add(lign);
                         }
                     }
@@ -223,7 +223,7 @@ $(document).ready(function(){
         });
 
         hullGeometry = new THREE.ConvexGeometry(points);
-        hullMesh = new THREE.Mesh(hullGeometry, new THREE.MeshNormalMaterial({color: 0xe8e8e8, transparent: true, opacity: 0.14}));
+        hullMesh = new THREE.Mesh(hullGeometry, new THREE.MeshNormalMaterial({color: 0xe8e8e8, transparent: true, opacity: 0.18}));
         
         scene.add(hullMesh);
     }
@@ -241,7 +241,7 @@ $(document).ready(function(){
         var vector = new THREE.Vector3(( event.clientX / window.innerWidth ) * 2 - 1, -( event.clientY / window.innerHeight ) * 2 + 1, 0.5);
         vector = vector.unproject(camera);
         var raycaster = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize());
-        var intersects = raycaster.intersectObjects(arrayShape);
+        var intersects = raycaster.intersectObjects(tab_user_connected);
 
         if (intersects.length > 0 && intersects[0].object != arrayShape[ID])
         {
@@ -417,7 +417,7 @@ $(document).ready(function(){
                     $('#message').val('');
                     $('#message').focus();
 
-                    var shape_transit_material = new THREE.MeshNormalMaterial({color: 0xe8e8e8, transparent: true, opacity: 0.2});
+                    var shape_transit_material = new THREE.MeshNormalMaterial({color: 0xe8e8e8, transparent: true, opacity: 0.3});
                     var shape_transit = new THREE.Mesh(new THREE.SphereGeometry(2, 5, 5), shape_transit_material);
                     shape_transit.position.set(arrayShape[ID].position.x, arrayShape[ID].position.y, arrayShape[ID].position.z);
                     shape_transit.name = 'shape_transit';
@@ -560,7 +560,7 @@ $(document).ready(function(){
 
                     for(e=0; e<j.user_recept.length; e++)
                     {
-                        var shape_transit_material = new THREE.MeshNormalMaterial({color: 0xe8e8e8, transparent: true, opacity: 0.3});
+                        var shape_transit_material = new THREE.MeshNormalMaterial({color: 0xe8e8e8, transparent: true, opacity: 0.4});
                         var shape_transit = new THREE.Mesh(new THREE.SphereGeometry(2, 5, 5), shape_transit_material);
                         shape_transit.position.set(arrayShape[user_emit[e]].position.x, arrayShape[user_emit[e]].position.y, arrayShape[user_emit[e]].position.z);
                         shape_transit.name = 'shape_transit';

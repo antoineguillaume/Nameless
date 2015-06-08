@@ -16,10 +16,10 @@
 @font-size-small:            ceil((@font-size-base * 0.85)); // ~13px
 @font-size-tiny:             ceil((@font-size-base * 0.75)); // ~11px
 
-@font-size-h1:               floor((@font-size-base * 3.6)); // ~54px
-@font-size-h2:               floor((@font-size-base * 2.8)); // ~42px
-@font-size-h3:               ceil((@font-size-base * 2.5)); // ~38px
-@font-size-h4:               ceil((@font-size-base * 2.25)); // ~34px
+@font-size-h1:               floor((@font-size-base * 3.7)); // ~54px
+@font-size-h2:               floor((@font-size-base * 2.5)); // ~42px
+@font-size-h3:               ceil((@font-size-base * 2.1)); // ~38px
+@font-size-h4:               ceil((@font-size-base * 1.25)); // ~34px
 @font-size-h5:               @font-size-base; // 15px
 @font-size-h6:               ceil((@font-size-base * 0.85)); // ~13px
 
@@ -167,10 +167,25 @@ html{
 			display: block;
 		}
 
+		noscript{
+			z-index: 9999;
+			position: fixed;
+			top: 0px;
+			left: 0px;
+			right: 0px;
+			bottom: 0px;
+			background: rgba(255, 255, 255, 0.9);
+			font-size: 22px;
+			text-align: center;
+			padding-top: 31%;
+			letter-spacing: 2px;
+			font-style: italic;
+			color: #919191;
+		}
+
 		.container{
 			margin: 0 auto;
 			position: relative;
-			position: absolute;
 			width: 100%;
 			height: 100%;
 			z-index: 2000;
@@ -178,19 +193,33 @@ html{
 			header{
 				position: relative;
 				display: block;
-				margin: 100px auto 40px auto;
-				width: 700px;
+				margin: 440px auto 85px auto;
+				width: 900px;
+
+				h1{
+					letter-spacing: 7px;
+					text-align: center;
+				}
+
+				.baseline{
+					font-size: @font-size-small;
+					letter-spacing: 3px;
+					text-align: center;
+					font-family: @font-gotham-light;
+					text-transform: uppercase;
+					margin-bottom: 55px;
+					color: @text-color-lighter;
+				}
 
 				p.intro{
 					z-index: 300;
 					text-align: center;
-					font-size: 14px;
-					color: @text-color-lighter;
+					font-size: 21px;
+					color: #919191;
 					font-style: italic;
-				}
-
-				h2{
-					margin-top: 90px;
+					padding: 0px 40px;
+					letter-spacing: 3px;
+					line-height: 33px;
 				}
 			}
 
@@ -201,10 +230,16 @@ html{
 			}
 
 			main{
+				display: none;
 				width: 700px;
 				margin: 0px auto;
 				z-index: 2000;
 				position: relative;
+
+				h2{
+					padding: 20px 0px 40px 0px;
+					letter-spacing: 2px;
+				}
 
 				form.inscription-form{
 					ol{
@@ -287,6 +322,7 @@ html{
 			}
 
 			footer{
+				display: none;
 				position: fixed;
 				bottom: 0px;
 				left: 0px;
@@ -476,7 +512,7 @@ html{
 					margin: 7px 0px 0px 5px;
 					float: left;
 					font-family: @font-gotham-bold;
-					font-size: @font-size-h4;
+					font-size: @font-size-h3;
 					color: #9E9E9E;
 
 			        @media screen and (max-width: 1076px) {
@@ -939,65 +975,45 @@ html{
 			}
 		}
 
-		.pace {
-		  -webkit-pointer-events: none;
-		  pointer-events: none;
+		// .pace {
+		//   -webkit-pointer-events: none;
+		//   pointer-events: none;
 
-		  -webkit-user-select: none;
-		  -moz-user-select: none;
-		  user-select: none;
-		}
+		//   -webkit-user-select: none;
+		//   -moz-user-select: none;
+		//   user-select: none;
+		// }
 
-		.pace.pace-inactive .pace-progress {
-		  display: none;
-		}
+		// .pace.pace-inactive .pace-progress {
+		//   display: none;
+		// }
 
-		.pace .pace-progress {
-		  position: fixed;
-		  z-index: 2000;
-		  top: 50%;
-		  margin-top: -50px;
-		  left: 50%;
-		  margin-left: -50px;
-		  height: 100px;
-		  width: 100px;
+		// .pace .pace-progress {
+		//   position: fixed;
+		//   z-index: 2000;
+		//   top: 50%;
+		//   margin-top: -50px;
+		//   left: 50%;
+		//   margin-left: -50px;
+		//   height: 100px;
+		//   width: 100px;
 
-		  -webkit-transform: translate3d(0, 0, 0) !important;
-		  -ms-transform: translate3d(0, 0, 0) !important;
-		  transform: translate3d(0, 0, 0) !important;
-		}
+		//   -webkit-transform: translate3d(0, 0, 0) !important;
+		//   -ms-transform: translate3d(0, 0, 0) !important;
+		//   transform: translate3d(0, 0, 0) !important;
+		// }
 
-		.pace .pace-progress:after {
-		  display: block;
-		  position: absolute;
-		  top: 50%;
-		  right: 50%;
-		  content: attr(data-progress-text);
-		  font-family: @font-corda-light;
-		  font-size: 15px;
-		  line-height: 1;
-		  text-align: center;
-		  color: rgba(0, 0, 0, 0.19999999999999996);
-}
+		// .pace .pace-progress:after {
+		//   display: block;
+		//   position: absolute;
+		//   top: 50%;
+		//   right: 50%;
+		//   content: attr(data-progress-text);
+		//   font-family: @font-corda-light;
+		//   font-size: 15px;
+		//   line-height: 1;
+		//   text-align: center;
+		//   color: rgba(0, 0, 0, 0.19999999999999996);
+		// }
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

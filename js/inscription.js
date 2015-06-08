@@ -5,6 +5,12 @@ $(document).ready(function(){
     init();
     animate();
 
+    $('.container main, .container footer').delay(5000).fadeIn(1500);
+
+    $('.container header').delay(4500).animate({
+        "margin-top" : "130px"
+    }, 1500);
+
     function init(){
         renderer = new THREE.WebGLRenderer();
         scene = new THREE.Scene();
