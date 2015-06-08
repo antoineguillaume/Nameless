@@ -241,7 +241,7 @@ $(document).ready(function(){
         var vector = new THREE.Vector3(( event.clientX / window.innerWidth ) * 2 - 1, -( event.clientY / window.innerHeight ) * 2 + 1, 0.5);
         vector = vector.unproject(camera);
         var raycaster = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize());
-        var intersects = raycaster.intersectObjects(tab_user_connected);
+        var intersects = raycaster.intersectObjects(arrayShape);
 
         if (intersects.length > 0 && intersects[0].object != arrayShape[ID])
         {
@@ -467,13 +467,7 @@ $(document).ready(function(){
         e.preventDefault();
         var information = $('#fiche').val();
 
-        if(information.length > 430)
-        {
-            $('.text-lenght').html(information.length);
-            $('.error-length').fadeIn(400);
-            return false;
-        }
-        else if(information != '')
+        if(information != '')
         {
             $('.error-length').fadeOut(400);
             $.ajax({
@@ -486,7 +480,8 @@ $(document).ready(function(){
                     $('.save-informations').fadeIn(400).delay(5000).fadeOut(400);
                 }
             });
-        }    });
+        }    
+    });
 
     function getMessage(){
         $.ajax({

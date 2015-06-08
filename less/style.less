@@ -77,7 +77,7 @@ html{
 	body{
 		font-family: @font-corda-light;
 		width: 100%;
-		overflow: hidden;
+		overflow-x: hidden;
 		padding: 0px;
 		margin: 0px;
 
@@ -193,8 +193,12 @@ html{
 			header{
 				position: relative;
 				display: block;
-				margin: 440px auto 85px auto;
+				margin: 22% auto 85px auto;
 				width: 900px;
+
+		        @media screen and (max-width: 900px) {
+					width: 100% !important;
+		        }
 
 				h1{
 					letter-spacing: 7px;
@@ -220,6 +224,10 @@ html{
 					padding: 0px 40px;
 					letter-spacing: 3px;
 					line-height: 33px;
+
+			        @media screen and (max-width: 900px) {
+						padding: 0px 20px;
+			        }
 				}
 			}
 
@@ -509,6 +517,7 @@ html{
 				}
 
 				span{
+					width: 24%;
 					margin: 7px 0px 0px 5px;
 					float: left;
 					font-family: @font-gotham-bold;
@@ -516,7 +525,7 @@ html{
 					color: #9E9E9E;
 
 			        @media screen and (max-width: 1076px) {
-			        	font-size: @font-size-h4;
+			        	font-size: @font-size-h3;
 			        	margin: 7px 0px 0px 0px;
 						display: block;
 						width: 100%;
@@ -530,11 +539,11 @@ html{
 					font-size: @font-size-small;
 					float: left;
 					display: block;
-					width: 70%;
+					width: 67%;
 					margin-left: 12px;
 
 			        @media screen and (max-width: 1076px) {
-			        	width: 75%;
+			        	width: 78%;
 			        	margin: 0px 21px;
 			        	text-align: center;
 						font-size: @font-size-tiny;
@@ -771,6 +780,9 @@ html{
 				padding: 15px;
 
 				.error-length{
+					position: absolute;
+					bottom: 60px;
+					background: white;
 					text-align: center;
 					margin-top: 10px;
 					display: none;
@@ -788,6 +800,7 @@ html{
 				}
 
 				.save-informations{
+					background: rgba(255, 255, 255, 0.8);
 					display: none;
 					position: relative;
 					top: -80px;
@@ -802,6 +815,7 @@ html{
 
 				#chatFiche{
 					height: 100%;
+					position: relative;
 
 					fieldset{
 						height: 100%;
@@ -818,10 +832,11 @@ html{
 					}
 
 					input[type="submit"]{
+						position: absolute;
 						padding: 0px;
 						border: none;
-						position: relative;
-						top: -45px;
+						bottom: 0px;
+						left: 0px;
 						height: 45px;
 						width: 100%;
 						text-transform: uppercase;

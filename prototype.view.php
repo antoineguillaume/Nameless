@@ -26,7 +26,7 @@
                         <form id="chatForm" method="post" action="">
                            <fieldset>
                                 <div class="error-length"><p class="errors-lign">Votre message doit contenir au maximum 130 caractères et il contient <span class="text-lenght"></span> caractères.</p></div>
-                                <input type="text" name="message" id="message" placeholder="Write something..." />
+                                <input type="text" name="message" id="message" placeholder="Ecris quelque chose..." />
                                 <input type="submit" value="Send" class="chat-send" />
                            </fieldset>
                         </form>
@@ -38,7 +38,6 @@
                     <form action="" method="post" id="chatFiche">
                         <fieldset>
                             <textarea name="fiche" id="fiche" placeholder="Sauvegardez des informations sur la forme avec laquelle vous parlez."></textarea>
-                            <div class="error-length"><p class="errors-lign">Votre message doit contenir au maximum 130 caractères et il contient <span class="text-lenght"></span> caractères.</p></div>
                             <input type="submit" value="Save" class="fiche-send" />
                         </fieldset>
                     </form>
@@ -47,7 +46,7 @@
                     </div>
                 </div>
             </div>
-            <button class="md-close md-close-chat">Close me!</button>
+            <button class="md-close md-close-chat">Close</button>
         </div>
 
         <div class="popup">
@@ -69,7 +68,7 @@
                     <p>La matrice vient de vous créer une forme personnelle. Vous la verrez différamment des autres de manère à mieux la reconnaitre.</p>
                 </div>
             </div>
-            <button class="md-close">Close me!</button>
+            <button class="md-close">Close</button>
         </div>
 
         <div class="navigation-icons">
