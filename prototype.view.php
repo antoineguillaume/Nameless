@@ -1,8 +1,16 @@
 <!doctype html>
 <html>
     <head>
-        <title>Nameless | Antoine Guillaume</title>
         <meta charset="utf-8">
+        <title>Nameless</title>
+        <meta name="description" content="Nameless est un réseau fonctionnel de discussions qui invite ses utilisateurs à créer des liens de manière à former une œuvre collective en trois dimensions. Ce réseau est essentiellement basé sur les échanges et le mouvement." />
+        <meta name="author" content="Antoine Guillaume" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="img/favicon.png" />
+
+        <!-- CSS -->
         <link rel="stylesheet" href="css/master.css">
     </head>
     <body>
@@ -18,7 +26,7 @@
                         <form id="chatForm" method="post" action="">
                            <fieldset>
                                 <div class="error-length"><p class="errors-lign">Votre message doit contenir au maximum 130 caractères et il contient <span class="text-lenght"></span> caractères.</p></div>
-                                <input type="text" name="message" id="message" placeholder="Write something..." />
+                                <input type="text" name="message" id="message" placeholder="Ecris quelque chose..." />
                                 <input type="submit" value="Send" class="chat-send" />
                            </fieldset>
                         </form>
@@ -30,7 +38,6 @@
                     <form action="" method="post" id="chatFiche">
                         <fieldset>
                             <textarea name="fiche" id="fiche" placeholder="Sauvegardez des informations sur la forme avec laquelle vous parlez."></textarea>
-                            <div class="error-length"><p class="errors-lign">Votre message doit contenir au maximum 130 caractères et il contient <span class="text-lenght"></span> caractères.</p></div>
                             <input type="submit" value="Save" class="fiche-send" />
                         </fieldset>
                     </form>
@@ -39,7 +46,7 @@
                     </div>
                 </div>
             </div>
-            <button class="md-close md-close-chat">Close me!</button>
+            <button class="md-close md-close-chat">Close</button>
         </div>
 
         <div class="popup">
@@ -55,13 +62,13 @@
                 <h2>Bienvenue,</h2>
                 <p>Vous êtes actuellement dans une grande matrice de formes dans laquelle vous allez voyager. Chaque forme que vous voyez correspond à un utilisateur. Si vous voulez parler à cette personne, interragissez avec sa forme. Essayez de créer et de garder les connexions que vous faites avec les autres ! Chaque connexion contribue à la création de la matrice.</p>
                 <p>Les formes qui sont moins visibles sont des formes inactives, vous ne pouvez donc pas interagir avec celles-ci. Pour discuter avec quelqu’un, il faut impérativement que vous soyez tous les deux connectés.</p>
-                <p>Dans la matrice, vous allez remarquer qu’il y a une forme un peu plus particulière. La forme <span class="blackshape">noire</span>. Celle-ci est le seul et unique échappatoire mis à votre disposition. En interagissant avec elle, vous serez déconnecté de la matrice.</p>
+                <p>Dans la matrice, vous allez remarquer qu’il y a une forme un peu plus particulière: la forme <span class="blackshape">noire</span>. Celle-ci est la seule et unique échappatoire mise à votre disposition. En interagissant avec elle, vous serez déconnecté de la matrice.</p>
                 <p class="align-right">Voyagez, découvrez, créez.</p>
                 <div class="new-shape">
-                    <p>La matrice vient de vous créer une forme personnelle. Vous la verrez différamment des autres de manère à mieux la reconnaitre.</p>
+                    <p>La matrice vient de vous créer une forme personnelle. Vous la verrez différemment des autres de manère à mieux la reconnaître.</p>
                 </div>
             </div>
-            <button class="md-close">Close me!</button>
+            <button class="md-close">Close</button>
         </div>
 
         <div class="navigation-icons">
@@ -127,6 +134,6 @@
     <script type="text/javascript" src="three/FirstPersonControls.js"></script>
     <script type="text/javascript" src="three/tween.js"></script>
     <script type="text/javascript" src="js/THREEx.WindowResize.js"></script>
-    <script type="text/javascript" src="js/statistiques.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/min/statistiques-min.js"></script>
+    <script type="text/javascript" src="js/min/main-min.js"></script>
 </html>

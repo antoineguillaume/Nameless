@@ -11,52 +11,52 @@
 html body {
   font-family: 'cordalight', serif, Arial;
   width: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
   padding: 0px;
   margin: 0px;
 }
 html body h1 {
   font-family: 'GothamBold', Helvetica, Arial, sans-serif;
-  font-size: 54px;
+  font-size: 55px;
   text-transform: uppercase;
   color: #252525;
 }
 @media screen and (max-width: 480px) {
   html body h1 {
-    font-size: 41.53846154px;
+    font-size: 42.30769231px;
   }
 }
 html body h2 {
   font-family: 'GothamBold', Helvetica, Arial, sans-serif;
-  font-size: 42px;
+  font-size: 37px;
   color: #252525;
   text-transform: uppercase;
 }
 @media screen and (max-width: 480px) {
   html body h2 {
-    font-size: 32.30769231px;
+    font-size: 28.46153846px;
   }
 }
 html body h3 {
   font-family: 'GothamLight', Helvetica, Arial, sans-serif;
-  font-size: 34px;
+  font-size: 19px;
   color: #252525;
   font-weight: bold;
 }
 @media screen and (max-width: 480px) {
   html body h3 {
-    font-size: 26.15384615px;
+    font-size: 14.61538462px;
   }
 }
 html body h4 {
   font-family: 'GothamMedium', Helvetica, Arial, sans-serif;
-  font-size: 34px;
+  font-size: 19px;
   color: #252525;
   letter-spacing: 1px;
 }
 @media screen and (max-width: 480px) {
   html body h4 {
-    font-size: 26.15384615px;
+    font-size: 14.61538462px;
   }
 }
 html body h5 {
@@ -100,10 +100,24 @@ html body button {
   cursor: pointer;
   display: block;
 }
+html body noscript {
+  z-index: 9999;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 22px;
+  text-align: center;
+  padding-top: 31%;
+  letter-spacing: 2px;
+  font-style: italic;
+  color: #919191;
+}
 html body .container {
   margin: 0 auto;
   position: relative;
-  position: absolute;
   width: 100%;
   height: 100%;
   z-index: 2000;
@@ -111,17 +125,41 @@ html body .container {
 html body .container header {
   position: relative;
   display: block;
-  margin: 100px auto 40px auto;
-  width: 700px;
+  margin: 22% auto 85px auto;
+  width: 900px;
 }
-html body .container header p {
+@media screen and (max-width: 900px) {
+  html body .container header {
+    width: 100% !important;
+  }
+}
+html body .container header h1 {
+  letter-spacing: 7px;
   text-align: center;
-  font-size: 12px;
-  color: #b0afaf;
-  font-style: italic;
 }
-html body .container header h2 {
-  margin-top: 90px;
+html body .container header .baseline {
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-align: center;
+  font-family: 'GothamLight', Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  margin-bottom: 55px;
+  color: #b0afaf;
+}
+html body .container header p.intro {
+  z-index: 300;
+  text-align: center;
+  font-size: 21px;
+  color: #919191;
+  font-style: italic;
+  padding: 0px 32px;
+  letter-spacing: 3px;
+  line-height: 33px;
+}
+@media screen and (max-width: 900px) {
+  html body .container header p.intro {
+    padding: 0px 20px;
+  }
 }
 @media screen and (max-width: 768px) {
   html body .container header,
@@ -130,10 +168,15 @@ html body .container header h2 {
   }
 }
 html body .container main {
+  display: none;
   width: 700px;
   margin: 0px auto;
   z-index: 2000;
   position: relative;
+}
+html body .container main h2 {
+  padding: 20px 0px 40px 0px;
+  letter-spacing: 2px;
 }
 html body .container main form.inscription-form ol {
   list-style: none;
@@ -204,6 +247,7 @@ html body .container main form.inscription-form div.inssend a {
   font-style: italic;
 }
 html body .container footer {
+  display: none;
   position: fixed;
   bottom: 0px;
   left: 0px;
@@ -328,9 +372,9 @@ html body .statistiques {
   z-index: 2000;
   display: block;
   width: 80%;
-  border-top: 6px solid #5c5c5c;
-  border-right: 6px solid #5c5c5c;
-  border-left: 6px solid #5c5c5c;
+  border-top: 6px solid #9E9E9E;
+  border-right: 6px solid #9E9E9E;
+  border-left: 6px solid #9E9E9E;
   opacity: 0.6;
   -webkit-transition: all .3s;
   -moz-transition: all .3s;
@@ -371,15 +415,16 @@ html body .statistiques .stats:last-child {
   border: none;
 }
 html body .statistiques .stats span {
+  width: 24%;
   margin: 7px 0px 0px 5px;
   float: left;
   font-family: 'GothamBold', Helvetica, Arial, sans-serif;
-  font-size: 34px;
-  color: #5c5c5c;
+  font-size: 32px;
+  color: #9E9E9E;
 }
 @media screen and (max-width: 1076px) {
   html body .statistiques .stats span {
-    font-size: 34px;
+    font-size: 32px;
     margin: 7px 0px 0px 0px;
     display: block;
     width: 100%;
@@ -392,12 +437,12 @@ html body .statistiques .stats p {
   font-size: 13px;
   float: left;
   display: block;
-  width: 70%;
+  width: 67%;
   margin-left: 12px;
 }
 @media screen and (max-width: 1076px) {
   html body .statistiques .stats p {
-    width: 75%;
+    width: 78%;
     margin: 0px 21px;
     text-align: center;
     font-size: 12px;
@@ -490,12 +535,12 @@ html body .modal-welcome {
 }
 html body .modal-welcome h2 {
   padding: 10% 0px 40px 0px;
-  font-size: 42px;
+  font-size: 37px;
 }
 @media screen and (max-width: 1440px) {
   html body .modal-welcome h2 {
     padding: 8% 0px 30px 0px;
-    font-size: 38px;
+    font-size: 32px;
   }
 }
 html body .modal-welcome p {
@@ -622,6 +667,9 @@ html body .container-modal-chat .md-content {
   padding: 15px;
 }
 html body .container-modal-chat .md-content .error-length {
+  position: absolute;
+  bottom: 60px;
+  background: white;
   text-align: center;
   margin-top: 10px;
   display: none;
@@ -636,6 +684,7 @@ html body .container-modal-chat .md-content .error-length p span.text-lenght {
   color: #fa3f3f;
 }
 html body .container-modal-chat .md-content .save-informations {
+  background: rgba(255, 255, 255, 0.8);
   display: none;
   position: relative;
   top: -80px;
@@ -648,6 +697,7 @@ html body .container-modal-chat .md-content .save-informations p {
 }
 html body .container-modal-chat .md-content #chatFiche {
   height: 100%;
+  position: relative;
 }
 html body .container-modal-chat .md-content #chatFiche fieldset {
   height: 100%;
@@ -662,10 +712,11 @@ html body .container-modal-chat .md-content #chatFiche textarea {
   outline: none;
 }
 html body .container-modal-chat .md-content #chatFiche input[type="submit"] {
+  position: absolute;
   padding: 0px;
   border: none;
-  position: relative;
-  top: -45px;
+  bottom: 0px;
+  left: 0px;
   height: 45px;
   width: 100%;
   text-transform: uppercase;

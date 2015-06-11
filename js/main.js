@@ -99,7 +99,7 @@ $(document).ready(function(){
                                 constructLign.colors[a] = new THREE.Color(Math.random(), Math.random(), Math.random());
                             }
 
-                            var lign = new THREE.Line( constructLign, new THREE.LineBasicMaterial({ transparent: true, opacity: 0.2, color: 0xffffff, vertexColors: THREE.VertexColors }), THREE.LinePieces);
+                            var lign = new THREE.Line( constructLign, new THREE.LineBasicMaterial({ transparent: true, opacity: 0.3, color: 0xffffff, vertexColors: THREE.VertexColors }), THREE.LinePieces);
                             scene.add(lign);
                         }
                     }
@@ -223,7 +223,7 @@ $(document).ready(function(){
         });
 
         hullGeometry = new THREE.ConvexGeometry(points);
-        hullMesh = new THREE.Mesh(hullGeometry, new THREE.MeshNormalMaterial({color: 0xe8e8e8, transparent: true, opacity: 0.08}));
+        hullMesh = new THREE.Mesh(hullGeometry, new THREE.MeshNormalMaterial({color: 0xe8e8e8, transparent: true, opacity: 0.14}));
         
         scene.add(hullMesh);
     }
@@ -241,7 +241,7 @@ $(document).ready(function(){
         var vector = new THREE.Vector3(( event.clientX / window.innerWidth ) * 2 - 1, -( event.clientY / window.innerHeight ) * 2 + 1, 0.5);
         vector = vector.unproject(camera);
         var raycaster = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize());
-        var intersects = raycaster.intersectObjects(arrayShape);
+        var intersects = raycaster.intersectObjects(tab_user_connected); 
 
         if (intersects.length > 0 && intersects[0].object != arrayShape[ID])
         {
@@ -369,17 +369,6 @@ $(document).ready(function(){
         return false;
     });
 
-    $('.disconnect').click(function(){
-        $.ajax({
-            url: 'espace-membre/script.php',
-            type: 'POST',
-            data: 'action=' + 'isNotConnected',
-            success: function(data){
-                document.location.href="espace-membre/deconnexion.php";
-            }
-        });
-    });
-
     function openModal(argument){
 
         if(argument == 'chat')
@@ -417,7 +406,7 @@ $(document).ready(function(){
                     $('#message').val('');
                     $('#message').focus();
 
-                    var shape_transit_material = new THREE.MeshNormalMaterial({color: 0xe8e8e8, transparent: true, opacity: 0.2});
+                    var shape_transit_material = new THREE.MeshNormalMaterial({color: 0xe8e8e8, transparent: true, opacity: 0.3});
                     var shape_transit = new THREE.Mesh(new THREE.SphereGeometry(2, 5, 5), shape_transit_material);
                     shape_transit.position.set(arrayShape[ID].position.x, arrayShape[ID].position.y, arrayShape[ID].position.z);
                     shape_transit.name = 'shape_transit';
@@ -467,13 +456,7 @@ $(document).ready(function(){
         e.preventDefault();
         var information = $('#fiche').val();
 
-        if(information.length > 430)
-        {
-            $('.text-lenght').html(information.length);
-            $('.error-length').fadeIn(400);
-            return false;
-        }
-        else if(information != '')
+        if(information != '')
         {
             $('.error-length').fadeOut(400);
             $.ajax({
@@ -486,7 +469,8 @@ $(document).ready(function(){
                     $('.save-informations').fadeIn(400).delay(5000).fadeOut(400);
                 }
             });
-        }    });
+        }    
+    });
 
     function getMessage(){
         $.ajax({
@@ -555,12 +539,10 @@ $(document).ready(function(){
                 tab_user_connected.push(logoutShape);
 
                 if(j.user_recept != null && j.user_emit != null){
-                    console.log(user_recept);
-                    console.log(user_emit);
 
                     for(e=0; e<j.user_recept.length; e++)
                     {
-                        var shape_transit_material = new THREE.MeshNormalMaterial({color: 0xe8e8e8, transparent: true, opacity: 0.2});
+                        var shape_transit_material = new THREE.MeshNormalMaterial({color: 0xe8e8e8, transparent: true, opacity: 0.4});
                         var shape_transit = new THREE.Mesh(new THREE.SphereGeometry(2, 5, 5), shape_transit_material);
                         shape_transit.position.set(arrayShape[user_emit[e]].position.x, arrayShape[user_emit[e]].position.y, arrayShape[user_emit[e]].position.z);
                         shape_transit.name = 'shape_transit';
@@ -589,12 +571,16 @@ $(document).ready(function(){
                         }).start();
                     }
                 }
+                for(a=0; a<arrayShape.length; a++)
+                {
+                    arrayShape[a].material.opacity = 0.14;
+                }
 
                 for(i=0; i<user_connected.length; i++)
                 {
                     var us_co = user_connected[i];
                     tab_user_connected.push(arrayShape[us_co]);
-                    tab_user_connected[i].material.opacity = 0.2;
+                    tab_user_connected[i+1].material.opacity = 0.4;
                 }
 
                 $('.chiffre1').html(nbr_shapes);
