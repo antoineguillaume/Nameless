@@ -83,7 +83,7 @@ include('bdd_connexion.php');
         <div id="container-exp-1"></div>
         <div class="container">
             <header>
-                <p class="intro">“  Bienvenue dans la préface matricielle. Je vous offre une opportunité, celle de participer à une expérience immersive. Créez des liens en participant à l’élaboration d’une oeuvre collective. ”</p>
+                <p class="intro">“ Bienvenue dans la préface matricielle. Je vous offre une opportunité, celle de participer à une expérience immersive. Créez des liens en participant à l’élaboration d’une oeuvre d'art collective. ”</p>
             </header>
             <main>
                 <h2>Inscription</h2>
@@ -128,7 +128,7 @@ include('bdd_connexion.php');
                 </div>
                 <div class="tooltip">
                     <div class="arrow-up"></div>
-                    <div class="text">Ce projet est une expérimentation que j’ai réalisé dans la cadre de mes études. Ce travail a pour but d’expérimenter l’implémentation de la 3D dans un navigateur web, grâce notamment, à la librairie <a href="http://threejs.org/" target="_blank">Three.js</a>. Ce projet vous permet de vivre une expérience immersive dans un monde en 3 dimensions. <a href="https://medium.com/@AKG_Antoine/nameless-99f877e7933b" target="_blank">Un article a été écrit à ce sujet et vous permettra d'en savoir plus.</a></div>
+                    <div class="text">Ce projet est une expérimentation que j’ai réalisée dans la cadre de mes études. Celle-ci a pour but d’expérimenter l’implémentation de la 3D dans un navigateur web, grâce notamment à la librairie <a href="http://threejs.org/" target="_blank">Three.js</a>. Le projet vous permet de vivre une expérience immersive dans un monde en 3 dimensions. <a href="https://medium.com/@AKG_Antoine/nameless-99f877e7933b" target="_blank">Un article a été écrit à ce sujet et vous permettra d'en savoir plus.</a></div>
                 </div>
             </footer>
         </div>        

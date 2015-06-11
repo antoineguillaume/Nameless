@@ -62,10 +62,10 @@
                 <h2>Bienvenue,</h2>
                 <p>Vous êtes actuellement dans une grande matrice de formes dans laquelle vous allez voyager. Chaque forme que vous voyez correspond à un utilisateur. Si vous voulez parler à cette personne, interragissez avec sa forme. Essayez de créer et de garder les connexions que vous faites avec les autres ! Chaque connexion contribue à la création de la matrice.</p>
                 <p>Les formes qui sont moins visibles sont des formes inactives, vous ne pouvez donc pas interagir avec celles-ci. Pour discuter avec quelqu’un, il faut impérativement que vous soyez tous les deux connectés.</p>
-                <p>Dans la matrice, vous allez remarquer qu’il y a une forme un peu plus particulière. La forme <span class="blackshape">noire</span>. Celle-ci est le seul et unique échappatoire mis à votre disposition. En interagissant avec elle, vous serez déconnecté de la matrice.</p>
+                <p>Dans la matrice, vous allez remarquer qu’il y a une forme un peu plus particulière: la forme <span class="blackshape">noire</span>. Celle-ci est la seule et unique échappatoire mise à votre disposition. En interagissant avec elle, vous serez déconnecté de la matrice.</p>
                 <p class="align-right">Voyagez, découvrez, créez.</p>
                 <div class="new-shape">
-                    <p>La matrice vient de vous créer une forme personnelle. Vous la verrez différamment des autres de manère à mieux la reconnaitre.</p>
+                    <p>La matrice vient de vous créer une forme personnelle. Vous la verrez différemment des autres de manère à mieux la reconnaître.</p>
                 </div>
             </div>
             <button class="md-close">Close</button>
